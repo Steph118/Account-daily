@@ -106,4 +106,6 @@
     <string name="logo">logo</string>
     <string name="accueil">accueil</string>
     <string name="connecter">Connecter</string>
+    <string name="serverClientId">1061055325480-o7s7na7t4asivirt963ut1fmiretk7gb.apps.googleusercontent.com</string>
+
 </resources>

@@ -5,6 +5,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -18,12 +19,13 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.auth.api.signin.GoogleSignInStatusCodes;
 import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
 public class LoginActivity extends AppCompatActivity {
 
     private ActivityLoginBinding binding;
-    private final int RC_SIGN_IN = 1;
+    private final int RC_SIGN_IN = 1000;
 
 
     @Override
@@ -71,36 +73,63 @@ public class LoginActivity extends AppCompatActivity {
                 .requestEmail()
                 .build();
         GoogleSignInClient mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
-
         signIn(mGoogleSignInClient);
     }
 
-    private void signIn(GoogleSignInClient mGoogleSignInClient) {
+    public void signIn(GoogleSignInClient mGoogleSignInClient) {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
-        startActivityForResult(signInIntent, RC_SIGN_IN);
+        startActivityForResult(signInIntent, 1);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == RC_SIGN_IN){
+        if (requestCode == 1){
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
             handleSignInResult(task);
         }
     }
 
-    private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
+    public void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
         try {
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
-            Log.e("TAG", "Signed in successfully" +  account.toString());
-            // Signed in successfully, show authenticated UI.
-            //updateUI(account);
+            Log.e("TAG", "Signed in successfully");
+            getAccueil(account);
         } catch (ApiException e) {
-            // The ApiException status code indicates the detailed failure reason.
-            // Please refer to the GoogleSignInStatusCodes class reference for more information.
             Log.e("TAG", "signInResult:failed code=" + e.getStatusCode());
-            //updateUI(null);
         }
     }
 
+    public void getAccueil(GoogleSignInAccount account){
+        String personPhoto = "" + account.getPhotoUrl();
+        Intent accueil =  new Intent(this,MainActivity.class);
+        accueil.putExtra("personName",account.getDisplayName());
+        accueil.putExtra("personGivenName",account.getGivenName());
+        accueil.putExtra("personFamilyName",account.getFamilyName());
+        accueil.putExtra("personEmail",account.getEmail());
+        accueil.putExtra("personId",account.getId());
+        accueil.putExtra("personPhoto",personPhoto);
+        accueil.putExtra("personIdToken",account.getIdToken());
+        accueil.putExtra("personServerAuthCode",account.getServerAuthCode());
+        startActivity(accueil);
+        finish();
+    }
+
+    @Override
+    protected void onStart() {
+        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
+        if (account!=null){
+            getAccueil(account);
+        }
+        super.onStart();
+    }
+    /*private void signOut(GoogleSignInClient mGoogleSignInClient) {
+        mGoogleSignInClient.signOut()
+                .addOnCompleteListener(this, new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+
+                    }
+                });
+    }*/
 }
