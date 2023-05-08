@@ -26,9 +26,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        binding.toolbar.setBackgroundColor(getResources().getColor(R.color.primaryTextColor));
-        binding.toolbar.setTitle("Accueil");
-        getData();
+        //binding.toolbar.setBackgroundColor(getResources().getColor(R.color.primaryTextColor));
+        //binding.toolbar.setTitle("Accueil");
+        //getData();
     }
 
     private void getData(){

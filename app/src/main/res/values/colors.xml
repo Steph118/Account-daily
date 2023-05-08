@@ -12,4 +12,22 @@
     <color name="pink">#f78da7</color>
     <!--colors for card-->
     <color name="whiteCardColor">#fff</color>
+    <color name="primary.light">#42a5f5</color>
+    <color name="primary.main">#1976d2</color>
+    <color name="primary.dark">#1565c0</color>
+    <color name="secondary.light">#ba68c8</color>
+    <color name="secondary.main">#9c27b0</color>
+    <color name="secondary.dark">#9c27b0</color>
+    <color name="error.light">#ef5350</color>
+    <color name="error.main">#d32f2f</color>
+    <color name="error.dark">#c62828</color>
+    <color name="warning.light">#ff9800</color>
+    <color name="warning.main">#ed6c02</color>
+    <color name="warning.dark">#e65100</color>
+    <color name="info.light">#03a9f4</color>
+    <color name="info.main">#0288d1</color>
+    <color name="info.dark">#01579b</color>
+    <color name="success.light">#4caf50</color>
+    <color name="success.main">#2e7d32</color>
+    <color name="success.dark">#1b5e20</color>
 </resources>
