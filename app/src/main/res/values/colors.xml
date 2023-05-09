@@ -30,4 +30,14 @@
     <color name="success.light">#4caf50</color>
     <color name="success.main">#2e7d32</color>
     <color name="success.dark">#1b5e20</color>
+
+    <integer-array name="androidcolors">
+        <item>@color/pink</item>
+        <item>@color/warning.dark</item>
+        <item>@color/warning.light</item>
+        <item>@color/info.dark</item>
+        <item>@color/secondary.dark</item>
+        <item>@color/primaryTextColor</item>
+        <item>@color/error.dark</item>
+    </integer-array>
 </resources>

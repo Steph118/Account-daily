@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#eceff1"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.AccueilFragment">
 
    <androidx.constraintlayout.widget.ConstraintLayout
        android:layout_width="match_parent"
-       android:background="#eceff1"
        android:layout_height="match_parent">
 
        <FrameLayout
@@ -97,7 +97,7 @@
        <androidx.recyclerview.widget.RecyclerView
            android:id="@+id/recyclerAccountDaily"
            android:layout_width="0dp"
-           android:layout_height="0dp"
+           android:layout_height="wrap_content"
            android:layout_marginTop="16dp"
            android:layout_marginStart="16dp"
            android:layout_marginEnd="8dp"
@@ -120,11 +120,11 @@
            <com.google.android.material.textview.MaterialTextView
                android:layout_width="match_parent"
                android:layout_height="wrap_content"
-               android:textStyle="bold"
                android:gravity="center"
+               android:textStyle="bold"
                android:textColor="@color/success.dark"
                android:text="@string/no_budget_limit"/>
        </RelativeLayout>
 
    </androidx.constraintlayout.widget.ConstraintLayout>
-</FrameLayout>
+</androidx.core.widget.NestedScrollView>

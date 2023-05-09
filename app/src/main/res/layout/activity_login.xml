@@ -106,6 +106,14 @@
                                     android:inputType="textPassword"/>
                             </com.google.android.material.textfield.TextInputLayout>
 
+                            <com.google.android.material.textview.MaterialTextView
+                                style="@style/viewParent"
+                                android:text="@string/forgot_password"
+                                android:textColor="@color/primaryTextColor"
+                                android:textSize="@dimen/newsMoreTextSize"
+                                android:layout_gravity="end"
+                                android:layout_marginTop="8dp"/>
+
                             <com.google.android.material.button.MaterialButton
                                 android:id="@+id/submitLoginButton"
                                 android:layout_width="match_parent"
@@ -114,15 +122,24 @@
                                 android:textStyle="bold"
                                 app:backgroundTint="@color/primaryTextColor"
                                 android:textColor="@color/whiteTextColor"
-                                android:layout_marginTop="@dimen/loginViewsMargin"/>
+                                android:layout_marginTop="8dp"/>
 
                                 <com.google.android.gms.common.SignInButton
                                     android:id="@+id/sign_in_button"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"
-                                    android:layout_marginTop="20dp"
+                                    android:layout_marginTop="8dp"
                                     android:background="@color/primaryTextColor" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/createAccount"
+                                style="@style/parent"
+                                android:gravity="end"
+                                android:textSize="12sp"
+                                android:textColor="@color/primaryTextColor"
+                                android:text="@string/login_signup_hint"
+                                android:layout_marginTop="10dp"/>
 
                         </LinearLayout>
 

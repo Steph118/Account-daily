@@ -97,7 +97,7 @@
     <string name="login_password_hint">Password</string>
     <string name="signup_login_hint">Already have an account? Sign In</string>
     <string name="login_signup_hint">Don\'t have an account? Sign Up</string>
-    <string name="forgot_password">Forgot Password?</string>
+    <string name="forgot_password">Forgot Password? Click here!</string>
     <string name="app_snipp">App Snipp</string>
     <string name="login_background">login background</string>
     <string name="login">Login</string>
@@ -124,5 +124,8 @@
     <string name="popularit">Popularité</string>
     <string name="like">Like</string>
     <string name="suivre">Suivre</string>
-
+    <string name="no_budget_limit">Budget non limité</string>
+    <string name="budget">Budget</string>
+    <string name="aller">Aller</string>
+    <string name="stats">Stats</string>
 </resources>
