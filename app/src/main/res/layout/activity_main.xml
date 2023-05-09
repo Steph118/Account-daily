@@ -37,8 +37,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textStyle="bold"
+            android:layout_marginStart="16dp"
             android:textColor="@color/whiteTextColor"
-            android:textSize="40sp"
+            android:textSize="30sp"
             android:text="Budget"/>
     </FrameLayout>
 
@@ -58,13 +59,14 @@
            <androidx.constraintlayout.widget.ConstraintLayout
                android:layout_width="match_parent"
                android:layout_height="match_parent"
-               android:padding="16dp">
+               android:padding="8dp">
 
                <LinearLayout
                    android:id="@+id/countLinear"
                    android:layout_width="0dp"
                    android:layout_height="wrap_content"
                    android:orientation="vertical"
+                   android:layout_marginStart="8dp"
                    app:layout_constraintBottom_toBottomOf="parent"
                    app:layout_constraintEnd_toStartOf="@+id/floatingActionButton"
                    app:layout_constraintStart_toStartOf="parent"
@@ -78,27 +80,29 @@
                    <com.google.android.material.textview.MaterialTextView
                        android:layout_width="match_parent"
                        android:layout_height="wrap_content"
-                       android:text="S5,020"
-                       android:textSize="40sp"
+                       android:text="F2755.0"
+                       android:layout_marginTop="5dp"
+                       android:textSize="20sp"
                        android:textStyle="bold" />
 
                    <com.google.android.material.textview.MaterialTextView
                        android:layout_width="match_parent"
                        android:layout_height="wrap_content"
-                       android:text="depense"
+                       android:text="- 201.25"
+                       android:textStyle="bold"
+                       android:layout_marginTop="5dp"
                        android:textColor="@color/error.light" />
 
                </LinearLayout>
 
                <com.google.android.material.floatingactionbutton.FloatingActionButton
                    android:id="@+id/floatingActionButton"
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
                    android:layout_marginEnd="8dp"
+                   style="@style/ls"
                    app:layout_constraintBottom_toBottomOf="@+id/countLinear"
                    app:layout_constraintEnd_toEndOf="parent"
                    app:layout_constraintTop_toTopOf="@+id/countLinear"
-                   app:srcCompat="@android:drawable/ic_input_add" />
+                    />
            </androidx.constraintlayout.widget.ConstraintLayout>
 
        </com.google.android.material.circularreveal.cardview.CircularRevealCardView>
