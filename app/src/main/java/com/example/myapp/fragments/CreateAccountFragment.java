@@ -8,18 +8,15 @@ import android.view.ViewGroup;
 import androidx.fragment.app.Fragment;
 
 import com.example.myapp.R;
-import com.example.myapp.databinding.FragmentDetailsBinding;
+public class CreateAccountFragment extends Fragment {
 
-public class DetailsFragment extends Fragment {
+    private static final String TAG = "createAccount";
 
-    private FragmentDetailsBinding binding;
-    private static final String TAG = "details";
-
-    public DetailsFragment() {
+    public CreateAccountFragment() {
     }
 
-    public static DetailsFragment newInstance() {
-       return new DetailsFragment();
+    public static CreateAccountFragment newInstance() {
+        return new CreateAccountFragment();
     }
 
     @Override
@@ -30,6 +27,6 @@ public class DetailsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_details, container, false);
+        return inflater.inflate(R.layout.fragment_create_account, container, false);
     }
 }

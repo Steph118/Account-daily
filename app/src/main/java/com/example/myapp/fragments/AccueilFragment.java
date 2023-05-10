@@ -1,8 +1,10 @@
 package com.example.myapp.fragments;
 
 import android.content.Context;
-import android.nfc.Tag;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -10,21 +12,16 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
-import com.example.myapp.Account;
-import com.example.myapp.R;
 import com.example.myapp.adapters.DailyAccountAdapter;
 import com.example.myapp.databinding.FragmentAccueilBinding;
+import com.example.myapp.entities.Account;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class AccueilFragment extends Fragment {
     private RecyclerView recyclerView;
-    public static final String TAG = "AccueilFragment";
+    public static final String TAG = "accueil";
     private FragmentAccueilBinding binding;
     private Context fContext;
     public AccueilFragment() {

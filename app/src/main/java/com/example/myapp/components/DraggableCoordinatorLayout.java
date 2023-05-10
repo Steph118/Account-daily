@@ -4,10 +4,12 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
+
 import androidx.annotation.NonNull;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.customview.widget.ViewDragHelper;
 import androidx.customview.widget.ViewDragHelper.Callback;
+
 import java.util.ArrayList;
 import java.util.List;
 

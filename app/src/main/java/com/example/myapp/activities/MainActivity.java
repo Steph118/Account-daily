@@ -1,33 +1,14 @@
 package com.example.myapp.activities;
 
-import androidx.annotation.ColorRes;
-import androidx.annotation.NonNull;
+import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.MenuItem;
-import android.view.View;
-
-import com.example.myapp.Account;
 import com.example.myapp.R;
-import com.example.myapp.adapters.DailyAccountAdapter;
 import com.example.myapp.databinding.ActivityMainBinding;
 import com.example.myapp.fragments.AccueilFragment;
-import com.google.android.gms.auth.api.signin.GoogleSignIn;
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-import com.google.android.gms.auth.api.signin.GoogleSignInApi;
-import com.google.android.gms.auth.api.signin.GoogleSignInClient;
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.material.navigation.NavigationBarMenuView;
-import com.google.android.material.navigation.NavigationBarView;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
@@ -39,7 +20,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        binding.toolbar.setBackgroundColor(getResources().getColor(R.color.primaryTextColor));
+        NavHostFragment navHostFragment = (NavHostFragment)getSupportFragmentManager()
+                .findFragmentById(R.id.fragment_container_main);
+        if (navHostFragment!=null){
+            /*NavController navController = navHostFragment.getNavController();
+            navController.navigate(R.id.action_accueilFragment2_to_createAccountFragment2);
+        */}
         init();
     }
 

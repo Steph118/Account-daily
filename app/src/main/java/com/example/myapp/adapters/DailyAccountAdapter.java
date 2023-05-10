@@ -1,8 +1,6 @@
 package com.example.myapp.adapters;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
-import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,9 +11,9 @@ import androidx.appcompat.content.res.AppCompatResources;
 import androidx.core.graphics.drawable.DrawableCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.myapp.Account;
 import com.example.myapp.R;
 import com.example.myapp.databinding.DailyAccountItemBinding;
+import com.example.myapp.entities.Account;
 
 import java.util.ArrayList;
 import java.util.List;

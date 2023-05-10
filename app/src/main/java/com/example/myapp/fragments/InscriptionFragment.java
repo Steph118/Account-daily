@@ -5,13 +5,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import androidx.fragment.app.Fragment;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
 import com.example.myapp.R;
 
 class InscriptionFragment extends Fragment {
+
+    private static final String TAG = "inscription";
 
     @Nullable
     @Override
