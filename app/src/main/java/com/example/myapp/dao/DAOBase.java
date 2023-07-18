@@ -14,7 +14,7 @@ public abstract class DAOBase {
     Context context;
 
     public DAOBase(Context context) {
-        this.context = context ;
+        this.context = context;
     }
 
     public SQLiteDatabase open() {
@@ -23,11 +23,11 @@ public abstract class DAOBase {
     }
 
     public void close() {
-        if (db!=null) db.close();
+        if (db != null) db.close();
     }
 
     public SQLiteDatabase getDb() {
-        if (db == null) return open() ;
+        if (db == null) return open();
         return db;
     }
 }

@@ -14,16 +14,17 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapp.adapters.DailyAccountAdapter;
 import com.example.myapp.databinding.FragmentAccueilBinding;
-import com.example.myapp.entities.Account;
+import com.example.myapp.entities.Montant;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class AccueilFragment extends Fragment {
-    private RecyclerView recyclerView;
     public static final String TAG = "accueil";
+    private RecyclerView recyclerView;
     private FragmentAccueilBinding binding;
     private Context fContext;
+
     public AccueilFragment() {
     }
 
@@ -62,29 +63,13 @@ public class AccueilFragment extends Fragment {
         Log.e(TAG, "getData ServerAuthCode: "+intent.getStringExtra("personServerAuthCode"));
     }*/
 
-    public void setRecyclerView(){
-        List<Account> accountList =new ArrayList<>();
-        accountList.add(new Account(12000, 500, 12000-500,"09/05/2023"));
-        accountList.add(new Account(12000, 500, 12000-500,"09/05/2023"));
-        accountList.add(new Account(12000, 500, 12000-500,"09/05/2023"));
-        accountList.add(new Account(12000, 500, 12000-500,"09/05/2023"));
-        accountList.add(new Account(12000, 500, 12000-500,"09/05/2023"));
-        accountList.add(new Account(12000, 500, 12000-500,"09/05/2023"));
-        accountList.add(new Account(12000, 500, 12000-500,"09/05/2023"));
-        accountList.add(new Account(12000, 500, 12000-500,"09/05/2023"));
-        accountList.add(new Account(12000, 500, 12000-500,"09/05/2023"));
-        accountList.add(new Account(12000, 500, 12000-500,"09/05/2023"));
-        accountList.add(new Account(12000, 500, 12000-500,"09/05/2023"));
-        accountList.add(new Account(12000, 500, 12000-500,"09/05/2023"));
-        accountList.add(new Account(12000, 500, 12000-500,"09/05/2023"));
-        accountList.add(new Account(12000, 500, 12000-500,"09/05/2023"));
-        accountList.add(new Account(12000, 500, 12000-500,"09/05/2023"));
-        accountList.add(new Account(12000, 500, 12000-500,"09/05/2023"));
-        accountList.add(new Account(12000, 500, 12000-500,"09/05/2023"));
-        accountList.add(new Account(12000, 500, 12000-500,"09/05/2023"));
+    public void setRecyclerView() {
+        List<Montant> accountList = new ArrayList<>();
+        accountList.add(new Montant(350, true, "09/05/2023"));
+        accountList.add(new Montant(500, true, "09/05/2023"));
         recyclerView = binding.recyclerAccountDaily;
         recyclerView.setLayoutManager(new LinearLayoutManager(fContext));
-        DailyAccountAdapter adapter = new DailyAccountAdapter(accountList,fContext);
+        DailyAccountAdapter adapter = new DailyAccountAdapter(accountList, fContext);
         recyclerView.setAdapter(adapter);
     }
 

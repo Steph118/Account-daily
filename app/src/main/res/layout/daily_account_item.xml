@@ -3,64 +3,63 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:elevation="5dp"
     android:layout_marginTop="5dp"
-    app:strokeColor="@color/cardview_light_background"
-    android:backgroundTint="@color/cardview_light_background">
+    android:backgroundTint="@color/cardview_light_background"
+    android:elevation="5dp"
+    app:strokeColor="@color/cardview_light_background">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:padding="8dp">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/letterView"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="12dp"
+            android:background="@drawable/day_background"
+            android:gravity="center"
+            android:singleLine="true"
+            android:textColor="@color/whiteTextColor"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/accountDaily"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            android:padding="8dp">
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="8dp"
+            android:text="F250.0"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/navigateToDetail"
+            app:layout_constraintStart_toEndOf="@+id/letterView"
+            app:layout_constraintTop_toTopOf="@+id/letterView" />
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/letterView"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:gravity="center"
-                android:singleLine="true"
-                android:textColor="@color/whiteTextColor"
-                android:background="@drawable/day_background"
-                android:layout_marginStart="12dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/date"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="12/12/2023"
+            android:textSize="13sp"
+            app:layout_constraintBottom_toBottomOf="@+id/letterView"
+            app:layout_constraintEnd_toEndOf="@+id/accountDaily"
+            app:layout_constraintStart_toStartOf="@+id/accountDaily"
+            app:layout_constraintTop_toBottomOf="@+id/accountDaily" />
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/accountDaily"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="8dp"
-                android:text="F250.0"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toStartOf="@+id/navigateToDetail"
-                app:layout_constraintStart_toEndOf="@+id/letterView"
-                app:layout_constraintTop_toTopOf="@+id/letterView" />
+        <ImageView
+            android:id="@+id/navigateToDetail"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_navigate_next_48px"
+            app:layout_constraintBottom_toBottomOf="@+id/letterView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/letterView"
+            android:contentDescription="@string/next_icon" />
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/date"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:text="12/12/2023"
-                android:textSize="13sp"
-                app:layout_constraintBottom_toBottomOf="@+id/letterView"
-                app:layout_constraintEnd_toEndOf="@+id/accountDaily"
-                app:layout_constraintStart_toStartOf="@+id/accountDaily"
-                app:layout_constraintTop_toBottomOf="@+id/accountDaily" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/navigateToDetail"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:text="@string/aller"
-                android:backgroundTint="@color/success.light"
-                android:textColor="@color/whiteTextColor"
-                app:layout_constraintBottom_toBottomOf="@+id/letterView"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/letterView" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </com.google.android.material.card.MaterialCardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>

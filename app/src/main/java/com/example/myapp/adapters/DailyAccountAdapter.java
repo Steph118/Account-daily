@@ -5,6 +5,7 @@ import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.content.res.AppCompatResources;
@@ -13,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapp.R;
 import com.example.myapp.databinding.DailyAccountItemBinding;
-import com.example.myapp.entities.Account;
+import com.example.myapp.entities.Montant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,12 +22,13 @@ import java.util.Random;
 
 public class DailyAccountAdapter extends RecyclerView.Adapter<DailyAccountAdapter.DailyViewHolder> {
 
-    private List<Account> accounts = new ArrayList<>();
+    private List<Montant> accounts = new ArrayList<>();
     private Context context;
+
     public DailyAccountAdapter() {
     }
 
-    public DailyAccountAdapter(List<Account> accounts, Context context) {
+    public DailyAccountAdapter(List<Montant> accounts, Context context) {
         this.accounts = accounts;
         this.context = context;
     }
@@ -35,16 +37,16 @@ public class DailyAccountAdapter extends RecyclerView.Adapter<DailyAccountAdapte
     @Override
     public DailyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         DailyAccountItemBinding binding = DailyAccountItemBinding.inflate(LayoutInflater.from(parent.getContext()),
-                parent,false);
-        return  new DailyViewHolder(binding);
+                parent, false);
+        return new DailyViewHolder(binding);
     }
 
     @Override
     public void onBindViewHolder(@NonNull DailyViewHolder holder, int position) {
-        holder.binding.accountDaily.setText(String.valueOf(accounts.get(position).getMontant()));
-        holder.binding.date.setText(accounts.get(position).getDate());
-        holder.binding.letterView.setText("L");
-        getRandomColor(holder.binding.letterView);
+        holder.accountDaily.setText(String.valueOf(accounts.get(position).getValeur()));
+        holder.date.setText(accounts.get(position).getDateCreation());
+        holder.letterView.setText("L");
+        getRandomColor(holder.letterView);
     }
 
     @Override
@@ -53,7 +55,7 @@ public class DailyAccountAdapter extends RecyclerView.Adapter<DailyAccountAdapte
     }
 
 
-    public void getRandomColor(View v){
+    public void getRandomColor(View v) {
         int[] androidColors = context.getResources().getIntArray(R.array.androidcolors);
         int randomAndroidColor = androidColors[new Random().nextInt(androidColors.length)];
         Drawable unwrappedDrawable = AppCompatResources.getDrawable(context, R.drawable.day_background);
@@ -61,11 +63,15 @@ public class DailyAccountAdapter extends RecyclerView.Adapter<DailyAccountAdapte
         DrawableCompat.setTint(wrappedDrawable, randomAndroidColor);
         v.setBackground(wrappedDrawable);
     }
+
     public class DailyViewHolder extends RecyclerView.ViewHolder {
-        public DailyAccountItemBinding binding;
+        public TextView accountDaily, date, letterView;
+
         public DailyViewHolder(@NonNull DailyAccountItemBinding binding) {
             super(binding.getRoot());
-            this.binding = binding;
+            accountDaily = binding.accountDaily;
+            date = binding.date;
+            letterView = binding.letterView;
         }
     }
 }

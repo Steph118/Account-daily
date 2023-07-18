@@ -4,10 +4,10 @@
         android:id="@+id/menuAccueil"
         android:enabled="true"
         android:icon="@drawable/ic_home_24"
-        android:title="@string/accueil"/>
+        android:title="@string/accueil" />
     <item
         android:id="@+id/menuStats"
         android:enabled="true"
         android:icon="@drawable/ic_graph_24"
-        android:title="@string/stats"/>
+        android:title="@string/stats" />
 </menu>

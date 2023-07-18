@@ -8,7 +8,7 @@
         android:id="@+id/accueilFragment"
         android:name="com.example.myapp.fragments.AccueilFragment"
         android:label="fragment_accueil"
-        tools:layout="@layout/fragment_accueil" >
+        tools:layout="@layout/fragment_accueil">
         <action
             android:id="@+id/action_accueilFragment_to_detailsFragment"
             app:destination="@id/detailsFragment" />
@@ -25,7 +25,7 @@
         android:id="@+id/createAccountFragment"
         android:name="com.example.myapp.fragments.CreateAccountFragment"
         android:label="fragment_create_account"
-        tools:layout="@layout/fragment_create_account" >
+        tools:layout="@layout/fragment_create_account">
         <action
             android:id="@+id/action_createAccountFragment_to_accueilFragment"
             app:destination="@id/accueilFragment" />

@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import androidx.fragment.app.Fragment;
 
 import com.example.myapp.R;
+
 public class CreateAccountFragment extends Fragment {
 
     private static final String TAG = "createAccount";

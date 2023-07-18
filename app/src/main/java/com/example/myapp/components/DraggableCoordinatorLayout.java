@@ -14,51 +14,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DraggableCoordinatorLayout extends CoordinatorLayout {
-    /** A listener to use when a child view is being dragged */
-    public interface ViewDragListener {
-        void onViewCaptured(@NonNull View view, int i);
-        void onViewReleased(@NonNull View view, float v, float v1);
-    }
-
     private final ViewDragHelper viewDragHelper;
     private final List<View> draggableChildren = new ArrayList<>();
     private ViewDragListener viewDragListener;
-
-    public DraggableCoordinatorLayout(Context context) {
-        this(context, null);
-    }
-
-    public DraggableCoordinatorLayout(Context context, AttributeSet attrs) {
-        super(context, attrs);
-
-        viewDragHelper = ViewDragHelper.create(this, dragCallback);
-    }
-
-    public void addDraggableChild(View child) {
-        if (child.getParent() != this) {
-            throw new IllegalArgumentException();
-        }
-        draggableChildren.add(child);
-    }
-
-    public void removeDraggableChild(View child) {
-        if (child.getParent() != this) {
-            throw new IllegalArgumentException();
-        }
-        draggableChildren.remove(child);
-    }
-
-    @Override
-    public boolean onInterceptTouchEvent(MotionEvent ev) {
-        return viewDragHelper.shouldInterceptTouchEvent(ev) || super.onInterceptTouchEvent(ev);
-    }
-
-    @Override
-    public boolean onTouchEvent(MotionEvent ev) {
-        viewDragHelper.processTouchEvent(ev);
-        return super.onTouchEvent(ev);
-    }
-
     private final Callback dragCallback =
             new Callback() {
                 @Override
@@ -101,6 +59,41 @@ public class DraggableCoordinatorLayout extends CoordinatorLayout {
                 }
             };
 
+    public DraggableCoordinatorLayout(Context context) {
+        this(context, null);
+    }
+
+    public DraggableCoordinatorLayout(Context context, AttributeSet attrs) {
+        super(context, attrs);
+
+        viewDragHelper = ViewDragHelper.create(this, dragCallback);
+    }
+
+    public void addDraggableChild(View child) {
+        if (child.getParent() != this) {
+            throw new IllegalArgumentException();
+        }
+        draggableChildren.add(child);
+    }
+
+    public void removeDraggableChild(View child) {
+        if (child.getParent() != this) {
+            throw new IllegalArgumentException();
+        }
+        draggableChildren.remove(child);
+    }
+
+    @Override
+    public boolean onInterceptTouchEvent(MotionEvent ev) {
+        return viewDragHelper.shouldInterceptTouchEvent(ev) || super.onInterceptTouchEvent(ev);
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent ev) {
+        viewDragHelper.processTouchEvent(ev);
+        return super.onTouchEvent(ev);
+    }
+
     private boolean viewIsDraggableChild(View view) {
         return draggableChildren.isEmpty() || draggableChildren.contains(view);
     }
@@ -108,5 +101,14 @@ public class DraggableCoordinatorLayout extends CoordinatorLayout {
     public void setViewDragListener(
             ViewDragListener viewDragListener) {
         this.viewDragListener = viewDragListener;
+    }
+
+    /**
+     * A listener to use when a child view is being dragged
+     */
+    public interface ViewDragListener {
+        void onViewCaptured(@NonNull View view, int i);
+
+        void onViewReleased(@NonNull View view, float v, float v1);
     }
 }

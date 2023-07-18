@@ -11,8 +11,8 @@ import com.example.myapp.databinding.ActivityMainBinding;
 import com.example.myapp.fragments.AccueilFragment;
 
 public class MainActivity extends AppCompatActivity {
-    private ActivityMainBinding binding;
     private final String TAG = "MainActivity";
+    private ActivityMainBinding binding;
     private RecyclerView recyclerView;
 
     @Override
@@ -20,19 +20,20 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        NavHostFragment navHostFragment = (NavHostFragment)getSupportFragmentManager()
+        NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.fragment_container_main);
-        if (navHostFragment!=null){
+        if (navHostFragment != null) {
             /*NavController navController = navHostFragment.getNavController();
             navController.navigate(R.id.action_accueilFragment2_to_createAccountFragment2);
-        */}
+        */
+        }
         init();
     }
 
-    void init(){
+    void init() {
         AccueilFragment accueilFragment = AccueilFragment.newInstance();
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.fragment_container_main,accueilFragment)
+                .replace(R.id.fragment_container_main, accueilFragment)
                 .commit();
     }
 

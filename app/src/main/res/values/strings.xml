@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">MyApp</string>
     <string name="open">Open</string>
+    <string name="app">DayCount</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="large_text">
@@ -92,7 +93,7 @@
         "For example, position the FAB to one side of stream of a cards so the FAB won’t interfere "
         "when a user tries to pick up one of cards.\n\n"
     </string>
-    <string name="register">REGISTER</string>
+    <string name="register" translatable="false">REGISTER</string>
     <string name="login_email_hint">Email</string>
     <string name="login_password_hint">Password</string>
     <string name="signup_login_hint">Already have an account? Sign In</string>
@@ -128,4 +129,5 @@
     <string name="budget">Budget</string>
     <string name="aller">Aller</string>
     <string name="stats">Stats</string>
+    <string name="next_icon">next icon</string>
 </resources>

@@ -12,14 +12,14 @@ import com.example.myapp.databinding.FragmentDetailsBinding;
 
 public class DetailsFragment extends Fragment {
 
-    private FragmentDetailsBinding binding;
     private static final String TAG = "details";
+    private FragmentDetailsBinding binding;
 
     public DetailsFragment() {
     }
 
     public static DetailsFragment newInstance() {
-       return new DetailsFragment();
+        return new DetailsFragment();
     }
 
     @Override
