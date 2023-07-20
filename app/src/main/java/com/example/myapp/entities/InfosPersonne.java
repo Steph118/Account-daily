@@ -1,31 +1,51 @@
 package com.example.myapp.entities;
 
 import androidx.annotation.NonNull;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.Index;
+import androidx.room.PrimaryKey;
 
+@Entity(tableName = "infos_personnes",
+        indices = {@Index(value = "email",unique = true)})
 public class InfosPersonne {
-    private long id;
+    @ColumnInfo(name = "id")
+    @PrimaryKey(autoGenerate = true)
+    private Long id;
+    @ColumnInfo(name = "nom")
     private String Nom;
+    @ColumnInfo(name = "prenom")
     private String prenom;
+    @ColumnInfo(name = "email")
     private String email;
+    @ColumnInfo(name = "telephone")
     private String telephone;
+    @ColumnInfo(name = "autre_telephone")
+    private String autreTelephone;
+    @ColumnInfo(name = "photo")
     private String photo;
+    @ColumnInfo(name = "id_user")
+    private Long idUser;
 
     public InfosPersonne() {
     }
 
-    public InfosPersonne(String nom, String prenom, String email, String telephone, String photo) {
+    public InfosPersonne(Long id, String nom, String prenom, String email, String telephone, String photo, Long idUser,String autreTelephone) {
+        this.id = id;
         Nom = nom;
         this.prenom = prenom;
         this.email = email;
         this.telephone = telephone;
+        this.autreTelephone = autreTelephone;
         this.photo = photo;
+        this.idUser = idUser;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -69,6 +89,22 @@ public class InfosPersonne {
         this.photo = photo;
     }
 
+    public Long getIdUser() {
+        return idUser;
+    }
+
+    public void setIdUser(Long idUser) {
+        this.idUser = idUser;
+    }
+
+    public String getAutreTelephone() {
+        return autreTelephone;
+    }
+
+    public void setAutreTelephone(String autreTelephone) {
+        this.autreTelephone = autreTelephone;
+    }
+
     @NonNull
     @Override
     public String toString() {
@@ -78,7 +114,9 @@ public class InfosPersonne {
                 ", prenom='" + prenom + '\'' +
                 ", email='" + email + '\'' +
                 ", telephone='" + telephone + '\'' +
-                ", photoe='" + photo + '\'' +
+                ", autreTelephone='" + autreTelephone + '\'' +
+                ", photo='" + photo + '\'' +
+                ", idUser='" + idUser + '\'' +
                 '}';
     }
 }

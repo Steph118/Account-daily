@@ -1,37 +1,48 @@
 package com.example.myapp.entities;
 
 import androidx.annotation.NonNull;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.ForeignKey;
+import androidx.room.PrimaryKey;
 
+@Entity(tableName = "depenses")
 public class Depense {
-    private long id;
-    private double valeur;
+    @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "id")
+    private Long id;
+    @ColumnInfo(name = "valeur",index = true)
+    private Double valeur;
+    @ColumnInfo(name = "libelle",index = true)
     private String libelle;
+    @ColumnInfo(name = "date_depense",index = true)
     private String dateDepense;
-    private Montant montant;
+    @ColumnInfo(name = "id_montant",index = true)
+    private Long idMontant;
 
     public Depense() {
     }
 
-    public Depense(double valeur, String libelle, String dateDepense, Montant montant) {
+    public Depense(double valeur, String libelle, String dateDepense, Long montant) {
         this.valeur = valeur;
         this.libelle = libelle;
         this.dateDepense = dateDepense;
-        this.montant = montant;
+        this.idMontant = montant;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public double getValeur() {
+    public Double getValeur() {
         return valeur;
     }
 
-    public void setValeur(double valeur) {
+    public void setValeur(Double valeur) {
         this.valeur = valeur;
     }
 
@@ -51,12 +62,12 @@ public class Depense {
         this.dateDepense = dateDepense;
     }
 
-    public Montant getMontant() {
-        return montant;
+    public Long getIdMontant() {
+        return idMontant;
     }
 
-    public void setMontant(Montant montant) {
-        this.montant = montant;
+    public void setIdMontant(Long idMontant) {
+        this.idMontant = idMontant;
     }
 
     @NonNull
@@ -67,7 +78,7 @@ public class Depense {
                 ", valeur=" + valeur +
                 ", libelle='" + libelle + '\'' +
                 ", dateDepense='" + dateDepense + '\'' +
-                ", montant=" + montant +
+                ", montant=" + idMontant +
                 '}';
     }
 }

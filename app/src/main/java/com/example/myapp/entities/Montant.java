@@ -1,26 +1,69 @@
 package com.example.myapp.entities;
 
 import androidx.annotation.NonNull;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity(tableName = "montants")
 public class Montant {
-
-    private long id;
-    private double valeur;
-    private boolean status;
+    @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "id")
+    private Long id;
+    @ColumnInfo(name = "valeur",index = true)
+    private Double valeur;
+    @ColumnInfo(name = "status",index = true)
+    private Boolean status;
+    @ColumnInfo(name = "date_creation",index = true)
     private String dateCreation;
+    @Ignore
     private List<Depense> depenses = new ArrayList<>();
-
 
     public Montant() {
     }
 
-    public Montant(double valeur, boolean status, String dateCreation) {
+    @Ignore
+    public Montant(Long id, Double valeur, Boolean status, String dateCreation, List<Depense> depenses) {
+        this.id = id;
         this.valeur = valeur;
         this.status = status;
         this.dateCreation = dateCreation;
+        this.depenses = depenses;
+    }
+
+    @Ignore
+    public Montant(Double valeur, Boolean status, String dateCreation) {
+        this.valeur = valeur;
+        this.status = status;
+        this.dateCreation = dateCreation;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Double getValeur() {
+        return valeur;
+    }
+
+    public void setValeur(Double valeur) {
+        this.valeur = valeur;
+    }
+
+    public Boolean getStatus() {
+        return status;
+    }
+
+    public void setStatus(Boolean status) {
+        this.status = status;
     }
 
     public String getDateCreation() {
@@ -29,34 +72,6 @@ public class Montant {
 
     public void setDateCreation(String dateCreation) {
         this.dateCreation = dateCreation;
-    }
-
-    public double getValeur() {
-        return valeur;
-    }
-
-    public void setValeur(double valeur) {
-        this.valeur = valeur;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public boolean getStatus() {
-        return status;
-    }
-
-    public void setStatus(boolean status) {
-        this.status = status;
-    }
-
-    public boolean isStatus() {
-        return status;
     }
 
     public List<Depense> getDepenses() {

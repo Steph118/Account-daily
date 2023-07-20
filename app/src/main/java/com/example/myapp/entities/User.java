@@ -1,20 +1,28 @@
 package com.example.myapp.entities;
 
 import androidx.annotation.NonNull;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
 
+@Entity(tableName = "users")
 public class User {
-    private long id;
+    @ColumnInfo(name = "id")
+    @PrimaryKey(autoGenerate = true)
+    private Long id;
+    @ColumnInfo(name = "username")
     private String username;
+    @ColumnInfo(name = "password")
     private String password;
-    private InfosPersonne infosPersonne;
 
+    @Ignore
     public User() {
     }
 
-    public User(String username, String password, InfosPersonne infosPersonne) {
+    public User(String username, String password) {
         this.username = username;
         this.password = password;
-        this.infosPersonne = infosPersonne;
     }
 
     public Long getId() {
@@ -41,18 +49,6 @@ public class User {
         this.password = password;
     }
 
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public InfosPersonne getInfosPersonne() {
-        return infosPersonne;
-    }
-
-    public void setInfosPersonne(InfosPersonne infosPersonne) {
-        this.infosPersonne = infosPersonne;
-    }
-
     @NonNull
     @Override
     public String toString() {
@@ -60,7 +56,6 @@ public class User {
                 "id=" + id +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
-                ", infosPersonne=" + infosPersonne +
                 '}';
     }
 }

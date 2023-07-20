@@ -1,7 +1,9 @@
 package com.example.myapp.fragments;
 
 import android.content.Context;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,10 +13,14 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.room.Database;
 
 import com.example.myapp.adapters.DailyAccountAdapter;
+import com.example.myapp.dao.UserDao;
+import com.example.myapp.database.AppDatabase;
 import com.example.myapp.databinding.FragmentAccueilBinding;
 import com.example.myapp.entities.Montant;
+import com.example.myapp.entities.User;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -65,17 +71,31 @@ public class AccueilFragment extends Fragment {
 
     public void setRecyclerView() {
         List<Montant> accountList = new ArrayList<>();
-        accountList.add(new Montant(350, true, "09/05/2023"));
-        accountList.add(new Montant(500, true, "09/05/2023"));
+        accountList.add(new Montant(350.0, true, "09/05/2023"));
+        accountList.add(new Montant(500.0, true, "09/05/2023"));
         recyclerView = binding.recyclerAccountDaily;
         recyclerView.setLayoutManager(new LinearLayoutManager(fContext));
         DailyAccountAdapter adapter = new DailyAccountAdapter(accountList, fContext);
         recyclerView.setAdapter(adapter);
+        new Task().execute();
     }
 
     @Override
     public void onAttach(@NonNull Context context) {
         this.fContext = context;
         super.onAttach(context);
+    }
+
+    public class Task extends AsyncTask<Void,Void,Void>{
+        @Override
+        protected Void doInBackground(Void... voids) {
+            click();
+            return null;
+        }
+    }
+    public void click(){
+        AppDatabase database = AppDatabase.getDatabase(fContext);
+        UserDao userDao = database.userDao();
+        Log.e(TAG, "click: "+userDao.getAll().size() );
     }
 }
