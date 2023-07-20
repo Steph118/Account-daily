@@ -1,6 +1,7 @@
 package com.example.myapp.activities;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -8,7 +9,10 @@ import android.view.View;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.myapp.dao.UserDao;
+import com.example.myapp.database.AppDatabase;
 import com.example.myapp.databinding.ActivityLoginBinding;
+import com.example.myapp.entities.User;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -19,7 +23,10 @@ import com.google.android.gms.tasks.Task;
 public class LoginActivity extends AppCompatActivity {
 
     private final int RC_SIGN_IN = 1000;
+    private boolean isSuccess = false,
+            haveAccount = false;
     private ActivityLoginBinding binding;
+    private String username = "", password = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,9 +54,9 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void verifyEdit() {
-        String login = String.valueOf(binding.editTextLogin.getText());
-        String password = String.valueOf(binding.editTextPassword.getText());
-        if (login.equals("")) {
+        username = String.valueOf(binding.editTextLogin.getText());
+        password = String.valueOf(binding.editTextPassword.getText());
+        if (username.equals("")) {
             binding.textInputPassword.setErrorEnabled(false);
             binding.textInputLogin.setErrorEnabled(true);
             binding.textInputLogin.setError("Champ requis");
@@ -58,8 +65,9 @@ public class LoginActivity extends AppCompatActivity {
             binding.textInputPassword.setErrorEnabled(true);
             binding.textInputPassword.setError("Champ requis");
         } else {
-            Intent mainIntent = new Intent(LoginActivity.this, MainActivity.class);
-            startActivity(mainIntent);
+            username = String.valueOf(binding.editTextLogin.getText());
+            password = String.valueOf(binding.editTextPassword.getText());
+            new LoginTask().execute();
         }
     }
 
@@ -127,4 +135,47 @@ public class LoginActivity extends AppCompatActivity {
                     }
                 });
     }*/
+
+    public class LoginTask extends AsyncTask<Void,Void,Void> {
+        @Override
+        protected Void doInBackground(Void... voids) {
+            login();
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void unused) {
+            if (!haveAccount){
+                Log.e("TAG", "onPostExecute: any compte" );
+            }else{
+                if (isSuccess){
+                    Intent mainIntent = new Intent(LoginActivity.this, MainActivity.class);
+                    startActivity(mainIntent);
+                    finish();
+                }else{
+                    binding.textInputLogin.setErrorEnabled(true);
+                    binding.textInputPassword.setErrorEnabled(true);
+                    binding.textInputLogin.setError("wrong login or passeword");
+                    binding.textInputPassword.setError("wrong login or passeword");
+                }
+            }
+            super.onPostExecute(unused);
+        }
+    }
+
+    public void login(){
+        AppDatabase database = AppDatabase.getDatabase(this);
+        UserDao userDao = database.userDao();
+        haveAccount = userDao.haveAccount();
+        if (haveAccount){
+            Log.e("login: ",username + " ---> " +password);
+            isSuccess =  userDao.verifyLogin(username,password);
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        this.finish();
+        super.onDestroy();
+    }
 }

@@ -4,9 +4,13 @@ import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.Ignore;
+import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
+import org.jetbrains.annotations.Nullable;
+
 @Entity(tableName = "users")
+//indices = {@Index(value = {"username", "password"})})
 public class User {
     @ColumnInfo(name = "id")
     @PrimaryKey(autoGenerate = true)
@@ -16,10 +20,10 @@ public class User {
     @ColumnInfo(name = "password")
     private String password;
 
-    @Ignore
     public User() {
     }
 
+    @Ignore
     public User(String username, String password) {
         this.username = username;
         this.password = password;

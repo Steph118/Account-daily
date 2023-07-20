@@ -3,6 +3,7 @@ package com.example.myapp.entities;
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
@@ -30,6 +31,7 @@ public class InfosPersonne {
     public InfosPersonne() {
     }
 
+    @Ignore
     public InfosPersonne(Long id, String nom, String prenom, String email, String telephone, String photo, Long idUser,String autreTelephone) {
         this.id = id;
         Nom = nom;

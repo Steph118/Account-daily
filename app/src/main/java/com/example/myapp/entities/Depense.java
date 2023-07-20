@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName = "depenses")
@@ -23,6 +24,7 @@ public class Depense {
     public Depense() {
     }
 
+    @Ignore
     public Depense(double valeur, String libelle, String dateDepense, Long montant) {
         this.valeur = valeur;
         this.libelle = libelle;

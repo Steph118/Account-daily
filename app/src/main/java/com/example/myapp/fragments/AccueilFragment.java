@@ -77,7 +77,6 @@ public class AccueilFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(fContext));
         DailyAccountAdapter adapter = new DailyAccountAdapter(accountList, fContext);
         recyclerView.setAdapter(adapter);
-        new Task().execute();
     }
 
     @Override
@@ -86,16 +85,4 @@ public class AccueilFragment extends Fragment {
         super.onAttach(context);
     }
 
-    public class Task extends AsyncTask<Void,Void,Void>{
-        @Override
-        protected Void doInBackground(Void... voids) {
-            click();
-            return null;
-        }
-    }
-    public void click(){
-        AppDatabase database = AppDatabase.getDatabase(fContext);
-        UserDao userDao = database.userDao();
-        Log.e(TAG, "click: "+userDao.getAll().size() );
-    }
 }
