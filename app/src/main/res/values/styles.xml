@@ -63,4 +63,8 @@
         <item name="android:windowExitAnimation">@anim/slide_down</item-->
     </style>
 
+    <style name="loadingBg" parent="ThemeOverlay.MaterialComponents.Dialog.Alert">
+        <item name="android:background">@android:color/background_light</item>
+    </style>
+
 </resources>
