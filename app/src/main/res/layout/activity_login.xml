@@ -42,6 +42,7 @@
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="300dp"
+                    android:elevation="32dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="@dimen/loginViewsMargin"
@@ -56,7 +57,7 @@
 
                         <com.google.android.material.textview.MaterialTextView
                             style="@style/parent"
-                            android:text="@string/connexion"
+                            android:text="@string/login2"
                             android:textAlignment="center"
                             android:textColor="@color/primaryTextColor"
                             android:textSize="15sp"
@@ -106,9 +107,11 @@
                         </com.google.android.material.textfield.TextInputLayout>
 
                         <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/forgetPassword"
                             style="@style/viewParent"
                             android:layout_gravity="end"
                             android:layout_marginTop="8dp"
+                            android:enabled="false"
                             android:text="@string/forgot_password"
                             android:textColor="@color/primaryTextColor"
                             android:textSize="@dimen/newsMoreTextSize" />
@@ -118,7 +121,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
-                            android:text="@string/connecter"
+                            android:text="@string/submit"
                             android:textColor="@color/whiteTextColor"
                             android:textStyle="bold"
                             app:backgroundTint="@color/primaryTextColor" />

@@ -6,9 +6,9 @@
     app:startDestination="@id/accueilFragment">
     <fragment
         android:id="@+id/accueilFragment"
-        android:name="com.example.myapp.fragments.AccueilFragment"
+        android:name="com.example.myapp.fragments.HomeFragment"
         android:label="fragment_accueil"
-        tools:layout="@layout/fragment_accueil">
+        tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_accueilFragment_to_detailsFragment"
             app:destination="@id/detailsFragment" />

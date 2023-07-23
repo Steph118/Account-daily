@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapp.R;
 import com.example.myapp.databinding.ActivityMainBinding;
-import com.example.myapp.fragments.AccueilFragment;
+import com.example.myapp.fragments.HomeFragment;
 
 public class MainActivity extends AppCompatActivity {
     private final String TAG = "MainActivity";
@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void init() {
-        AccueilFragment accueilFragment = AccueilFragment.newInstance();
+        HomeFragment accueilFragment = HomeFragment.newInstance();
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fragment_container_main, accueilFragment)
                 .commit();

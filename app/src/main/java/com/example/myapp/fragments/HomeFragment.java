@@ -1,9 +1,7 @@
 package com.example.myapp.fragments;
 
 import android.content.Context;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,29 +11,25 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.room.Database;
 
 import com.example.myapp.adapters.DailyAccountAdapter;
-import com.example.myapp.dao.UserDao;
-import com.example.myapp.database.AppDatabase;
-import com.example.myapp.databinding.FragmentAccueilBinding;
+import com.example.myapp.databinding.FragmentHomeBinding;
 import com.example.myapp.entities.Montant;
-import com.example.myapp.entities.User;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class AccueilFragment extends Fragment {
+public class HomeFragment extends Fragment {
     public static final String TAG = "accueil";
     private RecyclerView recyclerView;
-    private FragmentAccueilBinding binding;
+    private FragmentHomeBinding binding;
     private Context fContext;
 
-    public AccueilFragment() {
+    public HomeFragment() {
     }
 
-    public static AccueilFragment newInstance() {
-        return new AccueilFragment();
+    public static HomeFragment newInstance() {
+        return new HomeFragment();
     }
 
     @Override
@@ -44,9 +38,9 @@ public class AccueilFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        binding = FragmentAccueilBinding.inflate(inflater, container, false);
+        binding = FragmentHomeBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
 

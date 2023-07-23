@@ -4,15 +4,17 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.myapp.R;
 import com.example.myapp.dao.UserDao;
 import com.example.myapp.database.AppDatabase;
 import com.example.myapp.databinding.ActivityLoginBinding;
-import com.example.myapp.entities.User;
+import com.example.myapp.dialog.ForgetPasswordFragment;
+import com.example.myapp.dialog.InfosDialog;
+import com.example.myapp.dialog.InscriptionFragment;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -38,18 +40,15 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void setOnClick() {
-        binding.submitLoginButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                verifyEdit();
-            }
+        binding.submitLoginButton.setOnClickListener(v -> verifyEdit());
+        binding.signInButton.setOnClickListener(v -> googleSignIn());
+        binding.createAccount.setOnClickListener(v -> {
+            InscriptionFragment inscriptionFragment = InscriptionFragment.instance();
+            inscriptionFragment.show(getSupportFragmentManager(),InscriptionFragment.TAG);
         });
-
-        binding.signInButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                googleSignIn();
-            }
+        binding.forgetPassword.setOnClickListener(v -> {
+            ForgetPasswordFragment forgetPasswordFragment = ForgetPasswordFragment.instance();
+            forgetPasswordFragment.show(getSupportFragmentManager(),ForgetPasswordFragment.TAG);
         });
     }
 
@@ -146,7 +145,14 @@ public class LoginActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(Void unused) {
             if (!haveAccount){
-                Log.e("TAG", "onPostExecute: any compte" );
+                InfosDialog infos = new InfosDialog(
+                        R.string.ranking,
+                        R.string.no_account,
+                        R.string.create_account,
+                        R.string.cancel,
+                        null
+                );
+                infos.show(getSupportFragmentManager(),"infosDialog");
             }else{
                 if (isSuccess){
                     Intent mainIntent = new Intent(LoginActivity.this, MainActivity.class);
