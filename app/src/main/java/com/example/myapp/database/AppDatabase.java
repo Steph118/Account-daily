@@ -18,12 +18,14 @@ import com.example.myapp.entities.User;
 @Database(entities = {Depense.class, InfosPersonne.class,
         Montant.class, User.class}, version = 1, exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
-    private static AppDatabase db = null;
+    private static volatile AppDatabase db = null;
 
-    public static synchronized AppDatabase getDatabase(Context context){
+    public static AppDatabase getDatabase(Context context){
         if (db==null){
-            db = Room.databaseBuilder(context,
-                    AppDatabase.class, "daycount_db").build();
+            synchronized (AppDatabase.class){
+                    db = Room.databaseBuilder(context,
+                            AppDatabase.class, "daycount_db").build();
+            }
         }
         return db;
     }
