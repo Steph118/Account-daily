@@ -1,6 +1,7 @@
 package com.example.myapp.viewmodel;
 
 import android.app.Application;
+import android.os.AsyncTask;
 
 import androidx.lifecycle.ViewModel;
 
@@ -14,5 +15,13 @@ public class UserRepository {
     public UserRepository(Application application) {
         AppDatabase appDatabase = AppDatabase.getDatabase(application);
         this.userDao = appDatabase.userDao();
+    }
+
+    public class Task extends AsyncTask<Void, Void, Void>{
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            return null;
+        }
     }
 }
