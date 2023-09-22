@@ -7,9 +7,11 @@ import androidx.room.Ignore;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
+import java.io.Serializable;
+
 @Entity(tableName = "infos_personnes",
-        indices = {@Index(value = "email",unique = true)})
-public class InfosPersonne {
+        indices = {@Index(value = "email", unique = true)})
+public class InfosPersonne implements Serializable {
     @ColumnInfo(name = "id")
     @PrimaryKey(autoGenerate = true)
     private Long id;
@@ -32,7 +34,7 @@ public class InfosPersonne {
     }
 
     @Ignore
-    public InfosPersonne(Long id, String nom, String prenom, String email, String telephone, String photo, Long idUser,String autreTelephone) {
+    public InfosPersonne(Long id, String nom, String prenom, String email, String telephone, String photo, Long idUser, String autreTelephone) {
         this.id = id;
         Nom = nom;
         this.prenom = prenom;

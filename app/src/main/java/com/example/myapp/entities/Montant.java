@@ -6,19 +6,20 @@ import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity(tableName = "montants")
-public class Montant {
+public class Montant implements Serializable {
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
     private Long id;
-    @ColumnInfo(name = "valeur",index = true)
+    @ColumnInfo(name = "valeur", index = true)
     private Double valeur;
-    @ColumnInfo(name = "status",index = true)
+    @ColumnInfo(name = "status", index = true)
     private Boolean status;
-    @ColumnInfo(name = "date_creation",index = true)
+    @ColumnInfo(name = "date_creation", index = true)
     private String dateCreation;
     @Ignore
     private List<Depense> depenses = new ArrayList<>();

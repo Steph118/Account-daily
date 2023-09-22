@@ -1,8 +1,6 @@
 package com.example.myapp.dialog;
 
 import android.app.Dialog;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +13,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 public class LoadingDialog extends DialogFragment {
     public static final String TAG = "Loading dialog";
+
     @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {

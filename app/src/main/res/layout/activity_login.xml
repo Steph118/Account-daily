@@ -42,12 +42,12 @@
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="300dp"
-                    android:elevation="32dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="@dimen/loginViewsMargin"
                     android:layout_marginBottom="@dimen/loginViewsMargin"
                     android:background="@color/whiteCardColor"
+                    android:elevation="32dp"
                     app:cardCornerRadius="@dimen/loginCardRadius">
 
                     <LinearLayout
@@ -127,13 +127,13 @@
                             app:backgroundTint="@color/primaryTextColor" />
 
                         <com.google.android.gms.common.SignInButton
-                            android:visibility="gone"
                             android:id="@+id/sign_in_button"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_marginTop="8dp"
-                            android:background="@color/primaryTextColor" />
+                            android:background="@color/primaryTextColor"
+                            android:visibility="gone" />
 
                         <com.google.android.material.textview.MaterialTextView
                             android:id="@+id/createAccount"

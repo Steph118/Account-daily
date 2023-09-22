@@ -44,11 +44,11 @@ public class LoginActivity extends AppCompatActivity {
         binding.signInButton.setOnClickListener(v -> googleSignIn());
         binding.createAccount.setOnClickListener(v -> {
             InscriptionFragment inscriptionFragment = InscriptionFragment.instance();
-            inscriptionFragment.show(getSupportFragmentManager(),InscriptionFragment.TAG);
+            inscriptionFragment.show(getSupportFragmentManager(), InscriptionFragment.TAG);
         });
         binding.forgetPassword.setOnClickListener(v -> {
             ForgetPasswordFragment forgetPasswordFragment = ForgetPasswordFragment.instance();
-            forgetPasswordFragment.show(getSupportFragmentManager(),ForgetPasswordFragment.TAG);
+            forgetPasswordFragment.show(getSupportFragmentManager(), ForgetPasswordFragment.TAG);
         });
     }
 
@@ -135,7 +135,23 @@ public class LoginActivity extends AppCompatActivity {
                 });
     }*/
 
-    public class LoginTask extends AsyncTask<Void,Void,Void> {
+    public void login() {
+        AppDatabase database = AppDatabase.getDatabase(this);
+        UserDao userDao = database.userDao();
+        haveAccount = userDao.haveAccount();
+        if (haveAccount) {
+            Log.e("login: ", username + " ---> " + password);
+            isSuccess = userDao.verifyLogin(username, password);
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        this.finish();
+        super.onDestroy();
+    }
+
+    public class LoginTask extends AsyncTask<Void, Void, Void> {
         @Override
         protected Void doInBackground(Void... voids) {
             login();
@@ -144,7 +160,7 @@ public class LoginActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(Void unused) {
-            if (!haveAccount){
+            if (!haveAccount) {
                 InfosDialog infos = new InfosDialog(
                         R.string.ranking,
                         R.string.no_account,
@@ -152,13 +168,13 @@ public class LoginActivity extends AppCompatActivity {
                         R.string.cancel,
                         null
                 );
-                infos.show(getSupportFragmentManager(),"infosDialog");
-            }else{
-                if (isSuccess){
+                infos.show(getSupportFragmentManager(), "infosDialog");
+            } else {
+                if (isSuccess) {
                     Intent mainIntent = new Intent(LoginActivity.this, MainActivity.class);
                     startActivity(mainIntent);
                     finish();
-                }else{
+                } else {
                     binding.textInputLogin.setErrorEnabled(true);
                     binding.textInputPassword.setErrorEnabled(true);
                     binding.textInputLogin.setError("wrong login or passeword");
@@ -167,21 +183,5 @@ public class LoginActivity extends AppCompatActivity {
             }
             super.onPostExecute(unused);
         }
-    }
-
-    public void login(){
-        AppDatabase database = AppDatabase.getDatabase(this);
-        UserDao userDao = database.userDao();
-        haveAccount = userDao.haveAccount();
-        if (haveAccount){
-            Log.e("login: ",username + " ---> " +password);
-            isSuccess =  userDao.verifyLogin(username,password);
-        }
-    }
-
-    @Override
-    protected void onDestroy() {
-        this.finish();
-        super.onDestroy();
     }
 }

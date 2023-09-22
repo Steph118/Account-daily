@@ -3,22 +3,23 @@ package com.example.myapp.entities;
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
-import androidx.room.ForeignKey;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
+import java.io.Serializable;
+
 @Entity(tableName = "depenses")
-public class Depense {
+public class Depense implements Serializable {
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
     private Long id;
-    @ColumnInfo(name = "valeur",index = true)
+    @ColumnInfo(name = "valeur", index = true)
     private Double valeur;
-    @ColumnInfo(name = "libelle",index = true)
+    @ColumnInfo(name = "libelle", index = true)
     private String libelle;
-    @ColumnInfo(name = "date_depense",index = true)
+    @ColumnInfo(name = "date_depense", index = true)
     private String dateDepense;
-    @ColumnInfo(name = "id_montant",index = true)
+    @ColumnInfo(name = "id_montant", index = true)
     private Long idMontant;
 
     public Depense() {

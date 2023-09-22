@@ -4,14 +4,13 @@ import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.Ignore;
-import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
-import org.jetbrains.annotations.Nullable;
+import java.io.Serializable;
 
 @Entity(tableName = "users")
 //indices = {@Index(value = {"username", "password"})})
-public class User {
+public class User implements Serializable {
     @ColumnInfo(name = "id")
     @PrimaryKey(autoGenerate = true)
     private Long id;

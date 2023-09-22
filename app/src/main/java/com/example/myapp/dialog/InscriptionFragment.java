@@ -10,9 +10,8 @@ import android.view.Window;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
-import com.example.myapp.databinding.FragmentInscriptionBinding;
 
-import com.example.myapp.R;
+import com.example.myapp.databinding.FragmentInscriptionBinding;
 
 
 public class InscriptionFragment extends DialogFragment {
@@ -20,7 +19,7 @@ public class InscriptionFragment extends DialogFragment {
     public static final String TAG = "CREATE_ACCOUNT";
     private FragmentInscriptionBinding binding;
 
-    public static InscriptionFragment instance(){
+    public static InscriptionFragment instance() {
         return new InscriptionFragment();
     }
 
@@ -29,7 +28,7 @@ public class InscriptionFragment extends DialogFragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        binding = FragmentInscriptionBinding.inflate(inflater,container,false);
+        binding = FragmentInscriptionBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
 
@@ -50,7 +49,7 @@ public class InscriptionFragment extends DialogFragment {
         dialog.setCanceledOnTouchOutside(false);
     }
 
-    public void click(){
+    public void click() {
         binding.cancel.setOnClickListener(v -> this.dismiss());
     }
 }

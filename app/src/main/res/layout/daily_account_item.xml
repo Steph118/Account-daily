@@ -55,11 +55,11 @@
             android:id="@+id/navigateToDetail"
             android:layout_width="24dp"
             android:layout_height="24dp"
+            android:contentDescription="@string/next_icon"
             android:src="@drawable/ic_navigate_next_48px"
             app:layout_constraintBottom_toBottomOf="@+id/letterView"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/letterView"
-            android:contentDescription="@string/next_icon" />
+            app:layout_constraintTop_toTopOf="@+id/letterView" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>

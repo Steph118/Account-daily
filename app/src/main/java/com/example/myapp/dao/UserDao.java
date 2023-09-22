@@ -1,7 +1,5 @@
 package com.example.myapp.dao;
 
-import android.util.Log;
-
 import androidx.room.Dao;
 import androidx.room.Query;
 
@@ -22,10 +20,11 @@ public interface UserDao extends Crud<User> {
     @Query("select * from users where username = :username and password = :password")
     User getOne(String username, String password);
 
-    default boolean verifyLogin(String username, String password){
-        return getOne(username,password)!=null;
+    default boolean verifyLogin(String username, String password) {
+        return getOne(username, password) != null;
     }
-    default boolean haveAccount(){
+
+    default boolean haveAccount() {
         return (!getAll().isEmpty());
     }
 }

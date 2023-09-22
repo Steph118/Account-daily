@@ -11,7 +11,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 public class InfosDialog extends DialogFragment {
 
-    private int title, message , positiveText , negativeText;
+    private int title, message, positiveText, negativeText;
     private Integer icon = null;
 
     public InfosDialog() {
@@ -29,7 +29,7 @@ public class InfosDialog extends DialogFragment {
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
         MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(requireContext());
-        if (icon!=null){
+        if (icon != null) {
             builder.setIcon(icon);
         }
         builder.setTitle(title)
@@ -39,7 +39,7 @@ public class InfosDialog extends DialogFragment {
                     InscriptionFragment inscriptionFragment = InscriptionFragment.instance();
                     inscriptionFragment.show(getParentFragmentManager(), InscriptionFragment.TAG);
                 })
-                .setNegativeButton(negativeText,(dialog, which) -> this.dismiss());
+                .setNegativeButton(negativeText, (dialog, which) -> this.dismiss());
         return builder.create();
     }
 }

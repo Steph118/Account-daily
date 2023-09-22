@@ -12,7 +12,6 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
 import com.example.myapp.databinding.FragmentForgetPasswordBinding;
-import com.example.myapp.databinding.FragmentInscriptionBinding;
 
 
 public class ForgetPasswordFragment extends DialogFragment {
@@ -20,7 +19,7 @@ public class ForgetPasswordFragment extends DialogFragment {
     public static final String TAG = "FORGET_PASSWORD";
     private FragmentForgetPasswordBinding binding;
 
-    public static ForgetPasswordFragment instance(){
+    public static ForgetPasswordFragment instance() {
         return new ForgetPasswordFragment();
     }
 
@@ -29,7 +28,7 @@ public class ForgetPasswordFragment extends DialogFragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        binding = FragmentForgetPasswordBinding.inflate(inflater,container,false);
+        binding = FragmentForgetPasswordBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
 
@@ -50,7 +49,7 @@ public class ForgetPasswordFragment extends DialogFragment {
         dialog.setCanceledOnTouchOutside(false);
     }
 
-    public void click(){
+    public void click() {
         binding.cancel.setOnClickListener(v -> this.dismiss());
     }
 }

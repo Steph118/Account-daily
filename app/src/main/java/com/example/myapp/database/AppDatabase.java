@@ -20,24 +20,28 @@ import com.example.myapp.entities.User;
 public abstract class AppDatabase extends RoomDatabase {
     private static volatile AppDatabase db = null;
 
-    public static AppDatabase getDatabase(Context context){
-        if (db==null){
-            synchronized (AppDatabase.class){
-                    db = Room.databaseBuilder(context,
-                            AppDatabase.class, "daycount_db").build();
+    public static AppDatabase getDatabase(Context context) {
+        if (db == null) {
+            synchronized (AppDatabase.class) {
+                db = Room.databaseBuilder(context,
+                        AppDatabase.class, "daycount_db").build();
             }
         }
         return db;
     }
 
-    private void clearAllTablesForDb(){
-        if (db!=null){
+    private void clearAllTablesForDb() {
+        if (db != null) {
             db.clearAllTables();
         }
     }
+
     public abstract UserDao userDao();
+
     public abstract MontantDao montantDao();
+
     public abstract InfosPersonneDao infosPersonneDao();
+
     public abstract DepenseDao depenseDao();
 
 }
