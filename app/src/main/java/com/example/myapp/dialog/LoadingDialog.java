@@ -14,6 +14,9 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 public class LoadingDialog extends DialogFragment {
     public static final String TAG = "Loading dialog";
 
+    public LoadingDialog() {
+    }
+
     @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {

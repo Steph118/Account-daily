@@ -1,4 +1,4 @@
-package com.example.myapp.interfaces;
+package com.example.myapp.dao;
 
 import androidx.room.Dao;
 import androidx.room.Delete;
@@ -9,7 +9,8 @@ import java.io.Serializable;
 import java.util.List;
 
 @Dao
-public interface Crud<Entity extends Serializable> {
+public interface Crud<Entity extends Serializable, Id> {
+
     @Insert
     void insert(Entity entity);
 

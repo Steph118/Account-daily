@@ -14,6 +14,7 @@ import com.example.myapp.database.AppDatabase;
 import com.example.myapp.databinding.ActivityLoginBinding;
 import com.example.myapp.dialog.ForgetPasswordFragment;
 import com.example.myapp.dialog.InfosDialog;
+import com.example.myapp.dialog.InfosDialogSimple;
 import com.example.myapp.dialog.InscriptionFragment;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -22,11 +23,15 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
 
-public class LoginActivity extends AppCompatActivity {
+import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
+public class LoginActivity extends AppCompatActivity {
+    private ExecutorService executor = Executors.newFixedThreadPool(1);
     private final int RC_SIGN_IN = 1000;
-    private boolean isSuccess = false,
-            haveAccount = false;
+    private boolean isSuccess = false, haveAccount = false;
     private ActivityLoginBinding binding;
     private String username = "", password = "";
 
@@ -35,17 +40,17 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
+        /*loginViewModel = new ViewModelProvider(this)
+                .get(LoginViewModel.class);*/
         setOnClick();
     }
 
     public void setOnClick() {
         binding.submitLoginButton.setOnClickListener(v -> verifyEdit());
         binding.signInButton.setOnClickListener(v -> googleSignIn());
-        binding.createAccount.setOnClickListener(v -> {
-            InscriptionFragment inscriptionFragment = InscriptionFragment.instance();
-            inscriptionFragment.show(getSupportFragmentManager(), InscriptionFragment.TAG);
-        });
+        binding.createAccount.setOnClickListener(v ->
+                check()
+        );
         binding.forgetPassword.setOnClickListener(v -> {
             ForgetPasswordFragment forgetPasswordFragment = ForgetPasswordFragment.instance();
             forgetPasswordFragment.show(getSupportFragmentManager(), ForgetPasswordFragment.TAG);
@@ -135,53 +140,96 @@ public class LoginActivity extends AppCompatActivity {
                 });
     }*/
 
-    public void login() {
-        AppDatabase database = AppDatabase.getDatabase(this);
-        UserDao userDao = database.userDao();
+    public void haveAccount() {
+        UserDao userDao = initUserDao();
         haveAccount = userDao.haveAccount();
         if (haveAccount) {
-            Log.e("login: ", username + " ---> " + password);
             isSuccess = userDao.verifyLogin(username, password);
         }
     }
 
-    @Override
-    protected void onDestroy() {
-        this.finish();
-        super.onDestroy();
+    public UserDao initUserDao() {
+        AppDatabase database = AppDatabase.getDatabase(this);
+        return database.userDao();
+    }
+
+    public void infosDialog() {
+        InfosDialog infos = new InfosDialog(
+                R.string.ranking,
+                R.string.no_account,
+                R.string.create_account,
+                R.string.cancel,
+                null
+        );
+        infos.show(getSupportFragmentManager(), "infosDialog");
+    }
+
+    public void toLogin(boolean isSuccess) {
+        if (isSuccess) {
+            Intent mainIntent = new Intent(LoginActivity.this, MainActivity.class);
+            startActivity(mainIntent);
+            finish();
+        } else {
+            binding.textInputLogin.setErrorEnabled(true);
+            binding.textInputPassword.setErrorEnabled(true);
+            binding.textInputLogin.setError("wrong login or password");
+            binding.textInputPassword.setError("wrong login or password");
+        }
+    }
+
+    public void check() {
+        Runnable runnable = () -> {
+            try {
+                check(initUserDao().haveAccount());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        };
+        executor.submit(runnable);
+    }
+
+    public void check(boolean b) {
+        if (b) {
+            InfosDialogSimple infos = new InfosDialogSimple(
+                    R.string.app,
+                    R.string.already_account,
+                    R.string.ok,
+                    null
+            );
+            infos.show(getSupportFragmentManager(), "infosDialog");
+        } else {
+            InscriptionFragment inscriptionFragment = InscriptionFragment.instance();
+            inscriptionFragment.show(getSupportFragmentManager(), InscriptionFragment.TAG);
+        }
     }
 
     public class LoginTask extends AsyncTask<Void, Void, Void> {
         @Override
         protected Void doInBackground(Void... voids) {
-            login();
+            haveAccount();
             return null;
         }
 
         @Override
         protected void onPostExecute(Void unused) {
             if (!haveAccount) {
-                InfosDialog infos = new InfosDialog(
-                        R.string.ranking,
-                        R.string.no_account,
-                        R.string.create_account,
-                        R.string.cancel,
-                        null
-                );
-                infos.show(getSupportFragmentManager(), "infosDialog");
+                infosDialog();
             } else {
-                if (isSuccess) {
-                    Intent mainIntent = new Intent(LoginActivity.this, MainActivity.class);
-                    startActivity(mainIntent);
-                    finish();
-                } else {
-                    binding.textInputLogin.setErrorEnabled(true);
-                    binding.textInputPassword.setErrorEnabled(true);
-                    binding.textInputLogin.setError("wrong login or passeword");
-                    binding.textInputPassword.setError("wrong login or passeword");
-                }
+                toLogin(isSuccess);
             }
             super.onPostExecute(unused);
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        executor.shutdownNow();
+        super.onDestroy();
+    }
+
+    @Override
+    protected void onStop() {
+        executor.shutdownNow();
+        super.onStop();
     }
 }
