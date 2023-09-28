@@ -52,6 +52,5 @@
             app:itemIconTint="@color/cardview_light_background"
             app:itemTextColor="@color/cardview_light_background"
             app:menu="@menu/bottom_navigation_menu" />
-
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

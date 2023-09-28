@@ -55,7 +55,7 @@
                     android:layout_marginStart="8dp"
                     android:orientation="vertical"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/floatingActionButton"
+                    app:layout_constraintEnd_toStartOf="@+id/createDepenseFloatButton"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
@@ -83,8 +83,8 @@
                 </LinearLayout>
 
                 <com.google.android.material.floatingactionbutton.FloatingActionButton
-                    android:id="@+id/floatingActionButton"
-                    style="@style/ls"
+                    android:id="@+id/createDepenseFloatButton"
+                    style="@style/floatButtonPlus"
                     android:layout_marginEnd="8dp"
                     app:layout_constraintBottom_toBottomOf="@+id/countLinear"
                     app:layout_constraintEnd_toEndOf="parent"

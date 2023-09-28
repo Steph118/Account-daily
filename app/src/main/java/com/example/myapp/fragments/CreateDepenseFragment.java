@@ -9,15 +9,15 @@ import androidx.fragment.app.Fragment;
 
 import com.example.myapp.R;
 
-public class CreateAccountFragment extends Fragment {
+public class CreateDepenseFragment extends Fragment {
 
-    private static final String TAG = "createAccount";
+    public static final String TAG = "createAccount";
 
-    public CreateAccountFragment() {
+    public CreateDepenseFragment() {
     }
 
-    public static CreateAccountFragment newInstance() {
-        return new CreateAccountFragment();
+    public static CreateDepenseFragment newInstance() {
+        return new CreateDepenseFragment();
     }
 
     @Override

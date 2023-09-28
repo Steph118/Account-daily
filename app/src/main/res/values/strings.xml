@@ -59,4 +59,7 @@
     <string name="title_activity_main2">MainActivity2</string>
     <string name="ok">OK</string>
     <string name="already_account">You have already account</string>
+    <string name="account">Account</string>
+    <string name="recent_transcact">Recent Transactions</string>
+    <string name="voir_plus">Voir plus</string>
 </resources>

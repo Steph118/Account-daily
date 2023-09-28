@@ -10,16 +10,16 @@ import androidx.fragment.app.Fragment;
 import com.example.myapp.R;
 import com.example.myapp.databinding.FragmentDetailsBinding;
 
-public class DetailsFragment extends Fragment {
+public class ListDepenseFragment extends Fragment {
 
     private static final String TAG = "details";
     private FragmentDetailsBinding binding;
 
-    public DetailsFragment() {
+    public ListDepenseFragment() {
     }
 
-    public static DetailsFragment newInstance() {
-        return new DetailsFragment();
+    public static ListDepenseFragment newInstance() {
+        return new ListDepenseFragment();
     }
 
     @Override

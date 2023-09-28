@@ -32,6 +32,12 @@
     <color name="success.dark">#1b5e20</color>
     <color name="alltransparent">#01ffffff</color>
     <color name="transparenttotal">#00ffffff</color>
+    <color name="green">#1ABB9C</color>
+    <color name="green1">#12db8a</color>
+    <color name="green2">#06782f</color>
+    <color name="green3">#0a9f48</color>
+    <color name="green4">#0a9f48</color>
+    <color name="green5">#0cb356</color>
     <integer-array name="androidcolors">
         <item>@color/pink</item>
         <item>@color/warning.dark</item>

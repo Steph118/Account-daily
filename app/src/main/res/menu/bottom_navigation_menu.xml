@@ -10,4 +10,10 @@
         android:enabled="true"
         android:icon="@drawable/ic_graph_24"
         android:title="@string/stats" />
+
+    <item
+        android:id="@+id/menuAccount"
+        android:enabled="true"
+        android:icon="@drawable/ic_person_24"
+        android:title="@string/account" />
 </menu>

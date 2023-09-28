@@ -18,12 +18,12 @@
     </fragment>
     <fragment
         android:id="@+id/detailsFragment"
-        android:name="com.example.myapp.fragments.DetailsFragment"
+        android:name="com.example.myapp.fragments.ListDepenseFragment"
         android:label="fragment_details"
         tools:layout="@layout/fragment_details" />
     <fragment
         android:id="@+id/createAccountFragment"
-        android:name="com.example.myapp.fragments.CreateAccountFragment"
+        android:name="com.example.myapp.fragments.CreateDepenseFragment"
         android:label="fragment_create_account"
         tools:layout="@layout/fragment_create_account">
         <action

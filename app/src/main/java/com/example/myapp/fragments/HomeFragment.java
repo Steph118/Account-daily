@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.myapp.R;
 import com.example.myapp.adapters.DailyAccountAdapter;
 import com.example.myapp.databinding.FragmentHomeBinding;
 import com.example.myapp.entities.Montant;
@@ -47,7 +48,8 @@ public class HomeFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        setRecyclerView();
+        //setRecyclerView();
+        setClick();
     }
 
     /*private void getData(){
@@ -65,18 +67,26 @@ public class HomeFragment extends Fragment {
 
     public void setRecyclerView() {
         List<Montant> accountList = new ArrayList<>();
-        accountList.add(new Montant(350.0, true, "09/05/2023"));
-        accountList.add(new Montant(500.0, true, "09/05/2023"));
-        recyclerView = binding.recyclerAccountDaily;
-        recyclerView.setLayoutManager(new LinearLayoutManager(fContext));
-        DailyAccountAdapter adapter = new DailyAccountAdapter(accountList, fContext);
-        recyclerView.setAdapter(adapter);
+        //recyclerView = binding.recyclerAccountDaily;
+        //recyclerView.setLayoutManager(new LinearLayoutManager(fContext));
+        //DailyAccountAdapter adapter = new DailyAccountAdapter(accountList, fContext);
+        //recyclerView.setAdapter(adapter);
     }
 
     @Override
     public void onAttach(@NonNull Context context) {
         this.fContext = context;
         super.onAttach(context);
+    }
+
+    public void setClick(){
+        binding.createDepenseFloatButton.setOnClickListener(v -> {
+            CreateDepenseFragment createAccountFragment = new CreateDepenseFragment();
+            getParentFragmentManager().beginTransaction()
+                    .replace(R.id.fragment_container_main, createAccountFragment)
+                    .addToBackStack(CreateDepenseFragment.TAG)
+                    .commit();
+        });
     }
 
 }
