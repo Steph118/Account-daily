@@ -3,31 +3,42 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_nav_graph"
-    app:startDestination="@id/accueilFragment">
+    app:startDestination="@id/homeFragment">
     <fragment
-        android:id="@+id/accueilFragment"
+        android:id="@+id/homeFragment"
         android:name="com.example.myapp.fragments.HomeFragment"
         android:label="fragment_accueil"
         tools:layout="@layout/fragment_home">
         <action
-            android:id="@+id/action_accueilFragment_to_detailsFragment"
-            app:destination="@id/detailsFragment" />
-        <action
-            android:id="@+id/action_accueilFragment_to_createAccountFragment"
+            android:id="@+id/action_homeFragment_to_createAccountFragment"
             app:destination="@id/createAccountFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_listDepenseFragment"
+            app:destination="@id/listDepenseFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/detailsFragment"
-        android:name="com.example.myapp.fragments.ListDepenseFragment"
-        android:label="fragment_details"
-        tools:layout="@layout/fragment_details" />
     <fragment
         android:id="@+id/createAccountFragment"
         android:name="com.example.myapp.fragments.CreateDepenseFragment"
         android:label="fragment_create_account"
-        tools:layout="@layout/fragment_create_account">
+        tools:layout="@layout/fragment_create_depense">
         <action
-            android:id="@+id/action_createAccountFragment_to_accueilFragment"
-            app:destination="@id/accueilFragment" />
+            android:id="@+id/action_createAccountFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="true"/>
+    </fragment>
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="com.example.myapp.fragments.DetailsFragment"
+        android:label="fragment_details"
+        tools:layout="@layout/fragment_details" />
+    <fragment
+        android:id="@+id/listDepenseFragment"
+        android:name="com.example.myapp.fragments.ListDepenseFragment"
+        android:label="fragment_list_depense"
+        tools:layout="@layout/fragment_list_depense" >
+        <action
+            android:id="@+id/action_listDepenseFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
     </fragment>
 </navigation>

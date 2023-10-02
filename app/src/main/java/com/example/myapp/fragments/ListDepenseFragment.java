@@ -8,12 +8,12 @@ import android.view.ViewGroup;
 import androidx.fragment.app.Fragment;
 
 import com.example.myapp.R;
-import com.example.myapp.databinding.FragmentDetailsBinding;
+import com.example.myapp.databinding.FragmentListDepenseBinding;
 
 public class ListDepenseFragment extends Fragment {
 
     private static final String TAG = "details";
-    private FragmentDetailsBinding binding;
+    private FragmentListDepenseBinding binding;
 
     public ListDepenseFragment() {
     }
@@ -30,6 +30,6 @@ public class ListDepenseFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_details, container, false);
+        return inflater.inflate(R.layout.fragment_list_depense, container, false);
     }
 }

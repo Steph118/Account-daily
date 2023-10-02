@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="viewmodel"
+            type="com.example.myapp.viewmodel.CreateDepenseViewModel" />
+    </data>
+
+    <FrameLayout
+        tools:context=".fragments.CreateDepenseFragment"
+        android:background="@color/white"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent">
+
+        <androidx.core.widget.NestedScrollView
+            style="@style/parent">
+
+            <LinearLayout
+                style="@style/parent"
+                android:orientation="vertical"
+                android:padding="15dp">
+
+                <com.google.android.material.textview.MaterialTextView
+                    style="@style/parent"
+                    android:text="Register Form"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textInputLibelle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/createDepense"
+                    app:boxStrokeColor="@color/primaryTextColor"
+                    app:errorEnabled="false"
+                    app:hintTextColor="@color/primaryTextColor"
+                    app:shapeAppearance="?attr/shapeAppearanceCornerExtraSmall">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editTextLibelle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Libelle"
+                        android:inputType="text"
+                        android:maxLines="1"
+                        android:textCursorDrawable="@drawable/cursor_edit_text_login"
+                        android:textSize="@dimen/newsMoreTextSize" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textInputMontant"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/createDepense"
+                    app:boxStrokeColor="@color/primaryTextColor"
+                    app:errorEnabled="false"
+                    app:hintTextColor="@color/primaryTextColor"
+                    app:shapeAppearance="?attr/shapeAppearanceCornerExtraSmall">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editTextMontant"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Montant"
+                        android:inputType="numberDecimal"
+                        android:maxLines="1"
+                        android:textCursorDrawable="@drawable/cursor_edit_text_login"
+                        android:textSize="@dimen/newsMoreTextSize" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textInputDepense"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/createDepense"
+                    app:boxStrokeColor="@color/primaryTextColor"
+                    app:errorEnabled="false"
+                    app:hintTextColor="@color/primaryTextColor"
+                    app:shapeAppearance="?attr/shapeAppearanceCornerExtraSmall">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editTextDepense"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Dépense"
+                        android:inputType="numberDecimal"
+                        android:maxLines="1"
+                        android:textCursorDrawable="@drawable/cursor_edit_text_login"
+                        android:textSize="@dimen/newsMoreTextSize" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <LinearLayout
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/createDepense">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="10dp"
+                        android:text="Enregistrer une Date anterieure?" />
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        android:id="@+id/registerDate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:visibility="gone"
+                    android:id="@+id/textInputDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="0dp"
+                    app:boxStrokeColor="@color/primaryTextColor"
+                    app:errorEnabled="false"
+                    app:hintTextColor="@color/primaryTextColor"
+                    app:shapeAppearance="?attr/shapeAppearanceCornerExtraSmall">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editTextDate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Date du depense"
+                        android:inputType="datetime"
+                        android:maxLines="1"
+                        android:textCursorDrawable="@drawable/cursor_edit_text_login"
+                        android:textSize="@dimen/newsMoreTextSize" />
+                </com.google.android.material.textfield.TextInputLayout>
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/registerButton"
+        android:gravity="center"
+        android:layout_alignParentEnd="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/submit"
+        android:textColor="@color/whiteTextColor"
+        android:textStyle="bold"
+        android:visibility="visible"
+        app:backgroundTint="@color/success.light" />
+
+    <com.google.android.material.button.MaterialButton
+        android:gravity="center"
+        android:layout_alignParentStart="true"
+        android:id="@+id/cancelRegisterButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Cancel"
+        android:textColor="@color/whiteTextColor"
+        android:textStyle="bold"
+        android:visibility="visible"
+        app:backgroundTint="@color/error.light" />
+
+</RelativeLayout>
+</LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </FrameLayout>
+</layout>

@@ -9,6 +9,10 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.NavDirections;
+import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -16,6 +20,7 @@ import com.example.myapp.R;
 import com.example.myapp.adapters.DailyAccountAdapter;
 import com.example.myapp.databinding.FragmentHomeBinding;
 import com.example.myapp.entities.Montant;
+import com.example.myapp.entities.User;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -80,13 +85,12 @@ public class HomeFragment extends Fragment {
     }
 
     public void setClick(){
-        binding.createDepenseFloatButton.setOnClickListener(v -> {
-            CreateDepenseFragment createAccountFragment = new CreateDepenseFragment();
-            getParentFragmentManager().beginTransaction()
-                    .replace(R.id.fragment_container_main, createAccountFragment)
-                    .addToBackStack(CreateDepenseFragment.TAG)
-                    .commit();
+        binding.createDepenseFloatButton.setOnClickListener(v1 -> {
+            //Navigation.findNavController(v1).navigate(R.id.action_homeFragment_to_createAccountFragment);
+           /* NavHostFragment.findNavController(HomeFragment.this)
+                    .navigate(R.id.action_homeFragment_to_createAccountFragment);*/
+            NavDirections directions = HomeFragmentDirections.actionHomeFragmentToCreateAccountFragment();
+           Navigation.findNavController(v1).navigate(directions);
         });
     }
-
 }

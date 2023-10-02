@@ -19,7 +19,7 @@ public interface UserDao extends Crud<User, Long> {
     @Query("select * from users where username = :username and password = :password")
     User getOne(String username, String password);
 
-    default boolean verifyLogin(String username, String password) {
+     default boolean verifyLogin(String username, String password) {
         return getOne(username, password) != null;
     }
 
