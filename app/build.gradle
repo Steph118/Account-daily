@@ -67,4 +67,8 @@ dependencies {
     implementation "androidx.core:core-splashscreen:1.0.1"
     //datastore
     implementation "androidx.datastore:datastore-preferences:1.0.0"
+    //viewpager
+    implementation "androidx.viewpager2:viewpager2:1.0.0"
+    //circle points and view pager
+    implementation "com.tbuonomo:dotsindicator:5.0"
 }
