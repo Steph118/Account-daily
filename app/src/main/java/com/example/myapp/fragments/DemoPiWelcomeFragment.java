@@ -45,9 +45,9 @@ public class DemoPiWelcomeFragment extends Fragment {
     }
 
     public void setClick(View v1){
-        binding.skipDemo.setOnClickListener(v -> {
- /*           NavDirections directions = DemoFragmentDirections.actionDemoFragmentToEnrollementUserPiFragment();
-            Navigation.findNavController(v1).navigate(directions);*/
-        });
+        /*binding.skipDemo.setOnClickListener(v -> {
+            NavDirections directions = DemoFragmentDirections.actionDemoFragmentToEnrollementUserPiFragment();
+            Navigation.findNavController(v1).navigate(directions);
+        });*/
     }
 }
