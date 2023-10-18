@@ -8,11 +8,8 @@ import com.example.myapp.dao.UserDao;
 import com.example.myapp.database.AppDatabase;
 import com.example.myapp.entities.User;
 
-import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
-import java.util.concurrent.TimeUnit;
 
 public class InscriptionRepository {
     /*    ThreadPoolExecutor threadPoolExecutor;

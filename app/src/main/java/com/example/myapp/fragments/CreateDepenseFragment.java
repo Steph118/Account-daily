@@ -11,9 +11,6 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.myapp.constant.FormatDate;
-import com.example.myapp.dao.DepenseDao;
-import com.example.myapp.dao.UserDao;
-import com.example.myapp.database.AppDatabase;
 import com.example.myapp.databinding.FragmentCreateDepenseBinding;
 import com.example.myapp.entities.Depense;
 import com.google.android.material.datepicker.MaterialDatePicker;
@@ -27,9 +24,6 @@ import java.util.TimeZone;
 public class CreateDepenseFragment extends Fragment {
 
     public static final String TAG = "createAccount";
-    private String libelle, depense, montant, date, time, dateTime;
-    private FragmentCreateDepenseBinding binding;
-    private boolean ischeck;
     private final MaterialDatePicker<Long> datePicker = MaterialDatePicker.Builder.datePicker()
             .setTitleText("Select Date")
             .setSelection(MaterialDatePicker.todayInUtcMilliseconds())
@@ -39,6 +33,9 @@ public class CreateDepenseFragment extends Fragment {
             .setTimeFormat(TimeFormat.CLOCK_24H)
             .setTitleText("Select time")
             .build();
+    private String libelle, depense, montant, date, time, dateTime;
+    private FragmentCreateDepenseBinding binding;
+    private boolean ischeck;
 
     public CreateDepenseFragment() {
     }
@@ -55,7 +52,7 @@ public class CreateDepenseFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        binding = FragmentCreateDepenseBinding.inflate(inflater,container,false);
+        binding = FragmentCreateDepenseBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
 
@@ -65,49 +62,49 @@ public class CreateDepenseFragment extends Fragment {
         setClick();
     }
 
-    public  void setClick(){
+    public void setClick() {
         binding.switchRegisterDate.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            if (isChecked){
+            if (isChecked) {
                 binding.textInputDate.setVisibility(View.VISIBLE);
-            }else{
+            } else {
                 binding.textInputDate.setVisibility(View.GONE);
             }
         });
 
         binding.cancelRegisterButton.setOnClickListener(v ->
                 NavHostFragment.findNavController(this)
-                .navigate(CreateDepenseFragmentDirections.actionCreateAccountFragmentToHomeFragment()));
+                        .navigate(CreateDepenseFragmentDirections.actionCreateAccountFragmentToHomeFragment()));
 
         binding.registerButton.setOnClickListener(v -> {
             checkEdit();
         });
 
-       binding.textInputDate.setEndIconOnClickListener(v -> {
-           showDatePicker();
-       });
+        binding.textInputDate.setEndIconOnClickListener(v -> {
+            showDatePicker();
+        });
 
-       datePicker.addOnPositiveButtonClickListener(selection -> {
-           Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone("UTC"));
-           calendar.setTimeInMillis(selection);
-           date = FormatDate.datepicker(Locale.getDefault(),calendar);
-           showTimePicker();
-       });
+        datePicker.addOnPositiveButtonClickListener(selection -> {
+            Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone("UTC"));
+            calendar.setTimeInMillis(selection);
+            date = FormatDate.datepicker(Locale.getDefault(), calendar);
+            showTimePicker();
+        });
 
-       timePicker.addOnPositiveButtonClickListener(v -> {
-           int newHour = timePicker.getHour();
-           int newMinute = timePicker.getMinute();
-           onTimeSet(newHour, newMinute);
-           dateTime = date + " " + time;
-           binding.editTextDate.setText(dateTime);
-       });
+        timePicker.addOnPositiveButtonClickListener(v -> {
+            int newHour = timePicker.getHour();
+            int newMinute = timePicker.getMinute();
+            onTimeSet(newHour, newMinute);
+            dateTime = date + " " + time;
+            binding.editTextDate.setText(dateTime);
+        });
     }
 
-    public void checkEdit(){
+    public void checkEdit() {
         libelle = String.valueOf(binding.editTextLibelle.getText());
         montant = String.valueOf(binding.editTextMontant.getText());
         depense = String.valueOf(binding.editTextDepense.getText());
         ischeck = binding.switchRegisterDate.isChecked();
-        if (isEmpty(libelle)){
+        if (isEmpty(libelle)) {
             binding.textInputDepense.setErrorEnabled(false);
             binding.textInputMontant.setErrorEnabled(false);
             binding.textInputLibelle.setErrorEnabled(true);
@@ -117,42 +114,44 @@ public class CreateDepenseFragment extends Fragment {
             binding.textInputLibelle.setErrorEnabled(false);
             binding.textInputMontant.setErrorEnabled(true);
             binding.textInputMontant.setError("recquis");
-        }else if (isEmpty(depense)){
+        } else if (isEmpty(depense)) {
             binding.textInputMontant.setErrorEnabled(false);
             binding.textInputLibelle.setErrorEnabled(false);
             binding.textInputDepense.setErrorEnabled(true);
             binding.textInputDepense.setError("recquis");
-        }else{
+        } else {
             checkDateSelection(ischeck);
         }
     }
 
-    public void checkDateSelection(boolean isChecked){
-        if (isChecked){
+    public void checkDateSelection(boolean isChecked) {
+        if (isChecked) {
             registerWithDate();
-        }else{
+        } else {
             register1();
         }
     }
 
-    public void registerWithDate(){
-        if (isEmpty(String.valueOf(binding.editTextDate.getText()))){
+    public void registerWithDate() {
+        if (isEmpty(String.valueOf(binding.editTextDate.getText()))) {
             binding.textInputMontant.setErrorEnabled(false);
             binding.textInputLibelle.setErrorEnabled(false);
             binding.textInputDepense.setErrorEnabled(false);
             binding.textInputDate.setError("Date et time recquis");
-        }else{
+        } else {
             register1();
         }
     }
 
-    public void showDatePicker(){
-        datePicker.show(getParentFragmentManager(),TAG);
+    public void showDatePicker() {
+        datePicker.show(getParentFragmentManager(), TAG);
     }
-    public void showTimePicker(){
-        timePicker.show(getParentFragmentManager(),TAG);
+
+    public void showTimePicker() {
+        timePicker.show(getParentFragmentManager(), TAG);
     }
-    public void register1(){
+
+    public void register1() {
         Depense depense1 = new Depense();
         depense1.setLibelle(libelle);
         depense1.setValeur(Double.valueOf(montant));
@@ -163,7 +162,8 @@ public class CreateDepenseFragment extends Fragment {
         DepenseDao depenseDao = appDatabase.depenseDao();
         depenseDao.insert(depense1);*/
     }
-    public boolean isEmpty(String content){
+
+    public boolean isEmpty(String content) {
         return content.equals("");
     }
 

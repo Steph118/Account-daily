@@ -56,7 +56,7 @@ public class InscriptionFragment extends DialogFragment implements LifecycleOwne
         int width = ViewGroup.LayoutParams.MATCH_PARENT;
         int height = ViewGroup.LayoutParams.WRAP_CONTENT;
         Window window = dialog.getWindow();
-        if (window!=null){
+        if (window != null) {
             window.setLayout(width, height);
         }
         dialog.setCanceledOnTouchOutside(false);

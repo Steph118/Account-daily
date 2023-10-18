@@ -102,50 +102,51 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
 
-           <LinearLayout
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:orientation="vertical">
-               <androidx.constraintlayout.widget.ConstraintLayout
-                   android:layout_width="match_parent"
-                   android:layout_height="wrap_content"
-                   android:padding="5dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-                   <LinearLayout
-                       android:id="@+id/linearLayout2"
-                       android:layout_width="wrap_content"
-                       android:layout_height="wrap_content"
-                       android:orientation="horizontal"
-                       app:layout_constraintBottom_toBottomOf="parent"
-                       app:layout_constraintStart_toStartOf="parent"
-                       app:layout_constraintTop_toTopOf="parent">
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp">
 
-                       <com.google.android.material.textview.MaterialTextView
-                           android:layout_width="wrap_content"
-                           android:layout_height="wrap_content"
-                           android:text="@string/recent_transcact"
-                           android:textColor="@color/black"
-                           android:textSize="22sp" />
-                   </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/linearLayout2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
 
-                   <LinearLayout
-                       android:layout_width="wrap_content"
-                       android:layout_height="wrap_content"
-                       android:orientation="horizontal"
-                       app:layout_constraintBottom_toBottomOf="@+id/linearLayout2"
-                       app:layout_constraintEnd_toEndOf="parent"
-                       app:layout_constraintTop_toTopOf="@+id/linearLayout2">
+                        <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/recent_transcact"
+                            android:textColor="@color/black"
+                            android:textSize="22sp" />
+                    </LinearLayout>
 
-                       <com.google.android.material.textview.MaterialTextView
-                           android:layout_width="wrap_content"
-                           android:layout_height="wrap_content"
-                           android:layout_gravity="end"
-                           android:text="@string/voir_plus"
-                           android:textSize="15sp" />
-                   </LinearLayout>
-               </androidx.constraintlayout.widget.ConstraintLayout>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_constraintBottom_toBottomOf="@+id/linearLayout2"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/linearLayout2">
 
-           </LinearLayout>
+                        <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="end"
+                            android:text="@string/voir_plus"
+                            android:textSize="15sp" />
+                    </LinearLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </LinearLayout>
         </androidx.cardview.widget.CardView>
         <!--androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerAccountDaily"

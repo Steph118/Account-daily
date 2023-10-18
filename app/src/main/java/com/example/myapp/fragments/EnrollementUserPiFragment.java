@@ -1,15 +1,13 @@
 package com.example.myapp.fragments;
 
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.myapp.R;
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+
 import com.example.myapp.databinding.FragmentEnrollementUserPiBinding;
 
 public class EnrollementUserPiFragment extends Fragment {
@@ -31,7 +29,7 @@ public class EnrollementUserPiFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        binding = FragmentEnrollementUserPiBinding.inflate(inflater,container,false);
+        binding = FragmentEnrollementUserPiBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
 }

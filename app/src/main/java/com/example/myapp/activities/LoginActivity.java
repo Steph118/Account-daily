@@ -23,14 +23,12 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
 
-import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
 
 public class LoginActivity extends AppCompatActivity {
-    private ExecutorService executor = Executors.newFixedThreadPool(1);
     private final int RC_SIGN_IN = 1000;
+    private ExecutorService executor = Executors.newFixedThreadPool(1);
     private boolean isSuccess = false, haveAccount = false;
     private ActivityLoginBinding binding;
     private String username = "", password = "";
@@ -203,6 +201,18 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    protected void onDestroy() {
+        executor.shutdownNow();
+        super.onDestroy();
+    }
+
+    @Override
+    protected void onStop() {
+        executor.shutdownNow();
+        super.onStop();
+    }
+
     public class LoginTask extends AsyncTask<Void, Void, Void> {
         @Override
         protected Void doInBackground(Void... voids) {
@@ -219,17 +229,5 @@ public class LoginActivity extends AppCompatActivity {
             }
             super.onPostExecute(unused);
         }
-    }
-
-    @Override
-    protected void onDestroy() {
-        executor.shutdownNow();
-        super.onDestroy();
-    }
-
-    @Override
-    protected void onStop() {
-        executor.shutdownNow();
-        super.onStop();
     }
 }

@@ -9,7 +9,7 @@
         android:id="@+id/demoFragment"
         android:name="com.example.myapp.fragments.DemoFragment"
         android:label="fragment_demo"
-        tools:layout="@layout/fragment_demo" >
+        tools:layout="@layout/fragment_demo">
         <action
             android:id="@+id/action_demoFragment_to_dashbordPiFragment"
             app:destination="@id/dashbordPiFragment" />

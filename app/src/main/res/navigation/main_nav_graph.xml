@@ -25,7 +25,7 @@
             android:id="@+id/action_createAccountFragment_to_homeFragment"
             app:destination="@id/homeFragment"
             app:popUpTo="@id/homeFragment"
-            app:popUpToInclusive="true"/>
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/detailsFragment"
@@ -36,7 +36,7 @@
         android:id="@+id/listDepenseFragment"
         android:name="com.example.myapp.fragments.ListDepenseFragment"
         android:label="fragment_list_depense"
-        tools:layout="@layout/fragment_list_depense" >
+        tools:layout="@layout/fragment_list_depense">
         <action
             android:id="@+id/action_listDepenseFragment_to_detailsFragment"
             app:destination="@id/detailsFragment" />
