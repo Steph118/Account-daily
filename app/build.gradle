@@ -71,4 +71,6 @@ dependencies {
     implementation "androidx.viewpager2:viewpager2:1.0.0"
     //circle points and view pager
     implementation "com.tbuonomo:dotsindicator:5.0"
+    //lottis
+    implementation 'com.airbnb.android:lottie:6.1.0'
 }

@@ -19,7 +19,7 @@
     </fragment>
     <fragment
         android:id="@+id/dashbordPiFragment"
-        android:name="com.example.myapp.activities.DashbordPiFragment"
+        android:name="com.example.myapp.fragments.DashbordPiFragment"
         android:label="fragment_dashbord_pi"
         tools:layout="@layout/fragment_dashbord_pi" />
     <fragment
