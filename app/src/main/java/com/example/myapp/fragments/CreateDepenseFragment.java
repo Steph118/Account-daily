@@ -1,33 +1,37 @@
 package com.example.myapp.fragments;
 
-import android.content.Intent;
+import android.app.Dialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.PopupMenu;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.fragment.NavHostFragment;
 
-import com.example.myapp.activities.MainActivity;
+import com.example.myapp.R;
 import com.example.myapp.constant.FormatDate;
 import com.example.myapp.databinding.FragmentCreateDepenseBinding;
 import com.example.myapp.entities.Depense;
 import com.example.myapp.viewmodel.CreateDepenseViewModel;
-import com.example.myapp.viewmodel.InscriptionViewModel;
 import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.timepicker.MaterialTimePicker;
 import com.google.android.material.timepicker.TimeFormat;
+import com.saadahmedsoft.popupdialog.PopupDialog;
+import com.saadahmedsoft.popupdialog.Styles;
+import com.saadahmedsoft.popupdialog.listener.OnDialogButtonClickListener;
 
 import java.util.Calendar;
 import java.util.Locale;
 import java.util.TimeZone;
 
-public class CreateDepenseFragment extends Fragment {
+public class CreateDepenseFragment extends Fragment implements LifecycleOwner {
 
     public static final String TAG = "createAccount";
     private CreateDepenseViewModel createDepenseViewModel;
@@ -67,20 +71,49 @@ public class CreateDepenseFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        init();
+    }
+    public void init() {
         createDepenseViewModel = new ViewModelProvider(this)
                 .get(CreateDepenseViewModel.class);
-        setClick();
         observer();
+        setClick();
     }
 
     public void observer(){
-            final Observer<Boolean> observer = isRegister -> {
+           final Observer<Boolean> observer = isRegister -> {
                 if (isRegister) {
+                    PopupDialog.getInstance(requireContext())
+                            .setStyle(Styles.SUCCESS)
+                            .setHeading("Register Form")
+                            .setDescription("Ajout de la dépense effectué avec succès.")
+                            .setDismissButtonText("Quitter")
+                            .setDismissButtonBackground(R.drawable.bg_succes_dialog_button)
+                            .setCancelable(false)
+                            .showDialog(new OnDialogButtonClickListener() {
+                                @Override
+                                public void onDismissClicked(Dialog dialog) {
+                                    super.onDismissClicked(dialog);
+                                }
+                            });
+                }else{
+                    PopupDialog.getInstance(requireContext())
+                            .setStyle(Styles.FAILED)
+                            .setHeading("Register Form")
+                            .setDescription("Erreur lors de l'ajout de la dépense"
+                                    +"\nVeuillez reéssayer")
+                            .setDismissButtonText("Fermer")
+                            .setDismissButtonBackground(R.drawable.bg_error_dialog_button)
+                            .setCancelable(false)
+                            .showDialog(new OnDialogButtonClickListener() {
+                                @Override
+                                public void onDismissClicked(Dialog dialog) {
+                                    super.onDismissClicked(dialog);
+                                }
+                            });
                 }
-                //dismissLoadingDialog();
-            };
-            createDepenseViewModel.getIscreated().observe(getViewLifecycleOwner(),observer);
-            /*createDepenseViewModel.getIscreated().observe(this, observer);*/
+           };
+           createDepenseViewModel.getIscreated().observe(getViewLifecycleOwner(),observer);
     }
 
     public void setClick() {
@@ -177,9 +210,7 @@ public class CreateDepenseFragment extends Fragment {
         depense.setLibelle(libelle);
         depense.setValeur(Double.valueOf(montant));
         depense.setIdMontant(12L);
-        if (ischeck)
-            depense.setDateDepense(dateTime);
-
+        if (ischeck) depense.setDateDepense(dateTime);
         createDepenseViewModel.create(depense);
     }
 

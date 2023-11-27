@@ -9,6 +9,7 @@
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
+        android:visibility="gone"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@color/primary.light"
@@ -24,7 +25,14 @@
             app:titleTextColor="@color/whiteTextColor" />
     </com.google.android.material.appbar.AppBarLayout>
 
-    <include layout="@layout/nav_host_activity_main" />
+    <include
+        layout="@layout/nav_host_activity_main"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
 
     <LinearLayout
         android:id="@+id/linearLayout"

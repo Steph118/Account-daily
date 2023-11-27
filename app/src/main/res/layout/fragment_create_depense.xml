@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
@@ -9,26 +10,33 @@
             type="com.example.myapp.viewmodel.CreateDepenseViewModel" />
     </data>
 
-    <FrameLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white"
         tools:context=".fragments.CreateDepenseFragment">
-
-        <androidx.core.widget.NestedScrollView
-            style="@style/parent">
-
             <LinearLayout
-                style="@style/parent"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:orientation="vertical"
                 android:padding="15dp">
+
+                <RelativeLayout
+                    android:layout_gravity="center"
+                    android:layout_width="250dp"
+                    android:layout_height="250dp">
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/img_register_depense"/>
+                </RelativeLayout>
 
                 <com.google.android.material.textview.MaterialTextView
                     style="@style/parent"
                     android:text="Register Form"
                     android:textAlignment="center"
                     android:textColor="@color/black"
-                    android:textSize="30sp"
+                    android:textSize="22sp"
                     android:textStyle="bold" />
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -149,6 +157,9 @@
                         android:layout_marginTop="20dp"
                         android:gravity="center"
                         android:text="@string/submit"
+                        app:icon="@drawable/img_send_fleche"
+                        app:iconTint="@color/white"
+                        app:iconGravity="end"
                         android:textColor="@color/whiteTextColor"
                         android:textStyle="bold"
                         android:visibility="visible"
@@ -162,6 +173,8 @@
                         android:layout_marginTop="20dp"
                         android:gravity="center"
                         android:text="Cancel"
+                        app:icon="@drawable/img_quit"
+                        app:iconTint="@color/white"
                         android:textColor="@color/whiteTextColor"
                         android:textStyle="bold"
                         android:visibility="visible"
@@ -170,6 +183,5 @@
                 </RelativeLayout>
 
             </LinearLayout>
-        </androidx.core.widget.NestedScrollView>
-    </FrameLayout>
+    </androidx.core.widget.NestedScrollView>
 </layout>
