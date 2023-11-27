@@ -1,5 +1,6 @@
 package com.example.myapp.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,11 +9,16 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.fragment.NavHostFragment;
 
+import com.example.myapp.activities.MainActivity;
 import com.example.myapp.constant.FormatDate;
 import com.example.myapp.databinding.FragmentCreateDepenseBinding;
 import com.example.myapp.entities.Depense;
+import com.example.myapp.viewmodel.CreateDepenseViewModel;
+import com.example.myapp.viewmodel.InscriptionViewModel;
 import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.timepicker.MaterialTimePicker;
 import com.google.android.material.timepicker.TimeFormat;
@@ -24,6 +30,8 @@ import java.util.TimeZone;
 public class CreateDepenseFragment extends Fragment {
 
     public static final String TAG = "createAccount";
+    private CreateDepenseViewModel createDepenseViewModel;
+
     private final MaterialDatePicker<Long> datePicker = MaterialDatePicker.Builder.datePicker()
             .setTitleText("Select Date")
             .setSelection(MaterialDatePicker.todayInUtcMilliseconds())
@@ -59,7 +67,20 @@ public class CreateDepenseFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        createDepenseViewModel = new ViewModelProvider(this)
+                .get(CreateDepenseViewModel.class);
         setClick();
+        observer();
+    }
+
+    public void observer(){
+            final Observer<Boolean> observer = isRegister -> {
+                if (isRegister) {
+                }
+                //dismissLoadingDialog();
+            };
+            createDepenseViewModel.getIscreated().observe(getViewLifecycleOwner(),observer);
+            /*createDepenseViewModel.getIscreated().observe(this, observer);*/
     }
 
     public void setClick() {
@@ -128,7 +149,7 @@ public class CreateDepenseFragment extends Fragment {
         if (isChecked) {
             registerWithDate();
         } else {
-            register1();
+            register();
         }
     }
 
@@ -139,7 +160,7 @@ public class CreateDepenseFragment extends Fragment {
             binding.textInputDepense.setErrorEnabled(false);
             binding.textInputDate.setError("Date et time recquis");
         } else {
-            register1();
+            register();
         }
     }
 
@@ -151,16 +172,15 @@ public class CreateDepenseFragment extends Fragment {
         timePicker.show(getParentFragmentManager(), TAG);
     }
 
-    public void register1() {
-        Depense depense1 = new Depense();
-        depense1.setLibelle(libelle);
-        depense1.setValeur(Double.valueOf(montant));
-        depense1.setIdMontant(12L);
+    public void register() {
+        Depense depense = new Depense();
+        depense.setLibelle(libelle);
+        depense.setValeur(Double.valueOf(montant));
+        depense.setIdMontant(12L);
         if (ischeck)
-            depense1.setDateDepense(dateTime);
-       /* AppDatabase appDatabase = AppDatabase.getDatabase(requireContext());
-        DepenseDao depenseDao = appDatabase.depenseDao();
-        depenseDao.insert(depense1);*/
+            depense.setDateDepense(dateTime);
+
+        createDepenseViewModel.create(depense);
     }
 
     public boolean isEmpty(String content) {

@@ -8,7 +8,6 @@ import androidx.lifecycle.MutableLiveData;
 import com.example.myapp.repository.LoginRepository;
 
 public class LoginViewModel extends AndroidViewModel {
-
     private final LoginRepository loginRepository;
     private MutableLiveData<Boolean> verify = new MutableLiveData<>();
 

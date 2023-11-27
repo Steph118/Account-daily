@@ -11,7 +11,7 @@ public class InscriptionViewModel extends AndroidViewModel {
     private final InscriptionRepository inscriptionRepository;
     private MutableLiveData<String> username;
     private MutableLiveData<String> password;
-    private MutableLiveData<Boolean> isEnregister = new MutableLiveData<>();
+    private MutableLiveData<Boolean> isEnregister;
 
     public InscriptionViewModel(Application application) {
         super(application);
@@ -47,6 +47,6 @@ public class InscriptionViewModel extends AndroidViewModel {
     public void enregister(String username, String password) {
         this.getUsername().setValue(username);
         this.getPassword().setValue(password);
-        inscriptionRepository.register(this.username.getValue(), this.password.getValue(), isEnregister);
+        inscriptionRepository.register(this.username.getValue(), this.password.getValue(), this.getIsEnregister());
     }
 }
