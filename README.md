@@ -17,4 +17,4 @@ In conclusion, this native Android project, developed using the Java language an
 ## Application features 
 
 ### Login Screen
-<img src="/assets/login.gif" width="500" height="1000">
+<img src="/assets/login.gif" width="250" height="500">
